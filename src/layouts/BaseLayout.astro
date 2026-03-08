@@ -1,0 +1,98 @@
+---
+import Navbar from '../components/Navbar.astro';
+import TrustBand from '../components/TrustBand.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Fiscus Max , Your Family\'s Tax Advocate',
+  description = 'Expert tax preparation and IRS resolution for working families. Book your free consultation today.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Funnel+Display:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <Navbar />
+  <TrustBand />
+
+  <slot />
+
+  <Footer />
+
+  <!-- Scroll-to-top button -->
+  <button id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M9 14V4M4 9l5-5 5 5" stroke="#0a2910" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    // ============================================================
+    // URGENCY BANNER — position below nav
+    // ============================================================
+    const mainNav   = document.getElementById('mainNav') as HTMLElement;
+    const trustBand = document.getElementById('urgencyBanner') as HTMLElement;
+
+    function positionTrustBand() {
+      if (trustBand && mainNav) trustBand.style.top = mainNav.offsetHeight + 'px';
+    }
+    positionTrustBand();
+    window.addEventListener('resize', positionTrustBand, { passive: true });
+    window.addEventListener('scroll', positionTrustBand, { passive: true });
+
+    // ============================================================
+    // SCROLL-TO-TOP
+    // ============================================================
+    const scrollTopBtn = document.getElementById('scrollTop') as HTMLButtonElement;
+
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 420);
+    }, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ============================================================
+    // ACTIVE NAV LINK — highlights current section while scrolling
+    // ============================================================
+    const navAnchors   = document.querySelectorAll('.nav-links a[href^="#"]');
+    const pageSections = document.querySelectorAll('section[id]');
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navAnchors.forEach(a => {
+            a.classList.toggle('nav-active', a.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '-72px 0px -40% 0px'
+    });
+
+    pageSections.forEach(s => activeObserver.observe(s));
+  </script>
+
+</body>
+</html>

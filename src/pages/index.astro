@@ -1,11 +1,1423 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAButton from '../components/CTAButton.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <!-- Left column -->
+      <div class="hero-left">
+
+        <div class="hero-pill">
+          <span class="pill-dot"></span>
+          Free Consultations Available
+        </div>
+
+        <h1 class="hero-headline">Your Family Deserves Every&nbsp;Dollar&nbsp;Back.</h1>
+
+        <p class="hero-sub">Tax preparation and resolution made simple, affordable, and stress-free — because hardworking families shouldn't leave money on&nbsp;the&nbsp;table.</p>
+
+        <div class="hero-ctas">
+          <CTAButton href="#book" label="Book a Free Consultation" variant="primary" />
+          <CTAButton href="#services" label="See How We Help" variant="secondary" />
+        </div>
+
+        <div class="hero-divider"></div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">$2M+</span>
+            <span class="stat-label">Saved for Families</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Cases Resolved</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">98%</span>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+        </div>
+
+      </div><!-- /hero-left -->
+
+      <!-- Right column — animated cards -->
+      <div class="hero-right">
+
+        <!-- Floating badge -->
+        <div class="case-badge">&#x2713; IRS Case Closed &#x2713;</div>
+
+        <!-- Card 1: IRS Notice -->
+        <div class="card-wrap card-wrap-1" id="heroCard1">
+          <div class="hero-card card-irs">
+            <div class="card-alert-label">IRS Notice Received</div>
+            <div class="card-title">Balance Due: $12,450</div>
+            <div class="card-body">Action Required — Response deadline in 30 days</div>
+          </div>
+        </div>
+
+        <!-- Card 2: Resolution -->
+        <div class="card-wrap card-wrap-2" id="heroCard2">
+          <div class="hero-card card-res">
+            <div class="card-icon-box">
+              <span class="card-dollar">$</span>
+            </div>
+            <div class="card-success-label">Fiscus Max Resolved It</div>
+            <div class="card-title">Negotiated reduction secured:</div>
+            <div class="card-savings">$8,200 saved</div>
+          </div>
+        </div>
+
+      </div><!-- /hero-right -->
+
+    </div><!-- /hero-inner -->
+  </section>
+
+
+  <!-- ============================================================
+       PAIN POINTS
+  ============================================================ -->
+  <section id="painpoints">
+    <div class="section-inner">
+
+      <div class="painpoints-header reveal">
+        <div class="section-tag">Does This Sound Like You?</div>
+      </div>
+
+      <div class="painpoints-grid" id="painGrid">
+
+        <!-- Card 1 -->
+        <div class="pain-card">
+          <div class="pain-card-top">
+            <h3 class="pain-card-headline">You Dread April Every Year</h3>
+            <div class="bullet-cards">
+              <div class="bullet-card"><p>You worked hard all year and still owe</p></div>
+              <div class="bullet-card"><p>Your refund was smaller than you expected</p></div>
+              <div class="bullet-card"><p>Nobody explained why or what to do differently</p></div>
+              <div class="bullet-card"><p>You just sign whatever they put in front of you</p></div>
+            </div>
+          </div>
+          <div>
+            <a href="#book" class="btn-tier3">Book a Free Consultation</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="pain-card">
+          <div class="pain-card-top">
+            <h3 class="pain-card-headline">There's a Letter You Haven't Opened Yet</h3>
+            <div class="bullet-cards">
+              <div class="bullet-card"><p>The IRS sent a notice and it's been sitting there</p></div>
+              <div class="bullet-card"><p>You're not sure if ignoring it made things worse</p></div>
+              <div class="bullet-card"><p>You feel embarrassed but don't know who to call</p></div>
+              <div class="bullet-card"><p>You tried to handle it and got more confused</p></div>
+            </div>
+          </div>
+          <div>
+            <a href="#services" class="btn-tier3">See How We Can Help</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="pain-card">
+          <div class="pain-card-top">
+            <h3 class="pain-card-headline">You're Not Sure You're Doing It Right</h3>
+            <div class="bullet-cards">
+              <div class="bullet-card"><p>You have a side hustle but don't know what to claim</p></div>
+              <div class="bullet-card"><p>You switched jobs or had a major life change</p></div>
+              <div class="bullet-card"><p>You're using software and hoping for the best</p></div>
+              <div class="bullet-card"><p>Nobody has ever actually walked you through your return</p></div>
+            </div>
+          </div>
+          <div>
+            <a href="#services" class="btn-tier3">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="pain-card">
+          <div class="pain-card-top">
+            <h3 class="pain-card-headline">Your Business Deserves Better Than Box Software</h3>
+            <div class="bullet-cards">
+              <div class="bullet-card"><p>You're self-employed and the taxes feel impossible</p></div>
+              <div class="bullet-card"><p>You don't know how much to set aside quarterly</p></div>
+              <div class="bullet-card"><p>You're probably missing deductions every single year</p></div>
+              <div class="bullet-card"><p>Your accountant doesn't really understand your business</p></div>
+            </div>
+          </div>
+          <div>
+            <a href="#book" class="btn-tier3">Book a Business Consultation</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services">
+    <div class="services-inner" id="servicesInner">
+
+      <!-- Header -->
+      <div class="services-header">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">
+          <span class="grad-gold">We're In Your Corner</span>
+        </h2>
+      </div>
+
+      <!-- Tab Nav -->
+      <div class="services-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-0">
+          <span class="tab-full">Tax Preparation</span><span class="tab-short">Preparation</span>
+        </button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-1">
+          <span class="tab-full">Tax Resolution</span><span class="tab-short">Resolution</span>
+        </button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-2">
+          <span class="tab-full">Tax Planning</span><span class="tab-short">Planning</span>
+        </button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-3">
+          <span class="tab-full">Business &amp; Contractors</span><span class="tab-short">Business</span>
+        </button>
+      </div>
+
+      <!-- Panel 1: Tax Preparation -->
+      <div class="tab-panel active" id="panel-0" role="tabpanel">
+        <div class="panel-left">
+          <h3 class="panel-title">Filing Made Easy</h3>
+          <p class="panel-desc">We handle your return from start to finish, finding every credit and deduction your family qualifies for. You just bring your documents, we do the rest.</p>
+          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
+             target="_blank" rel="noopener noreferrer" class="panel-cta">Book a Filing Consultation</a>
+        </div>
+        <div class="panel-right">
+          <p class="panel-list-label">What's Included</p>
+          <ul class="panel-bullets">
+            <li>Federal and state tax return filing</li>
+            <li>Credits review (EITC, Child Tax Credit, education)</li>
+            <li>Deduction maximization</li>
+            <li>Prior year return review</li>
+            <li>48-hour quote turnaround</li>
+            <li>100% remote, no office visit needed</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 2: Tax Resolution -->
+      <div class="tab-panel" id="panel-1" role="tabpanel">
+        <div class="panel-left">
+          <h3 class="panel-title">IRS Problems? We've Got You.</h3>
+          <p class="panel-desc">You didn't mean for it to get this far. Life happened, and suddenly the IRS feels like an enemy. We've helped hundreds of families in exactly your position reduce what they owe, stop the notices, and finally breathe again. We know the system because we work inside it every day.</p>
+          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
+             target="_blank" rel="noopener noreferrer" class="panel-cta">Get IRS Help Now</a>
+        </div>
+        <div class="panel-right">
+          <p class="panel-list-label">How We Resolve It</p>
+          <ul class="panel-bullets">
+            <li>Offer in Compromise (reduce total balance)</li>
+            <li>IRS Installment Agreements</li>
+            <li>Penalty &amp; interest abatement</li>
+            <li>Currently Not Collectible status</li>
+            <li>Unfiled return compliance</li>
+            <li>Wage garnishment &amp; levy release</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 3: Tax Planning -->
+      <div class="tab-panel" id="panel-2" role="tabpanel">
+        <div class="panel-left">
+          <h3 class="panel-title">Stay Ahead All Year</h3>
+          <p class="panel-desc">Don't wait until April. We help you build a year-round strategy so tax season never catches your family off guard again. Smart planning today means more in your pocket tomorrow.</p>
+          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
+             target="_blank" rel="noopener noreferrer" class="panel-cta">Start Your Tax Plan</a>
+        </div>
+        <div class="panel-right">
+          <p class="panel-list-label">What Planning Includes</p>
+          <ul class="panel-bullets">
+            <li>Quarterly tax review check-ins</li>
+            <li>Withholding optimization</li>
+            <li>Life event tax impact analysis</li>
+            <li>Retirement contribution strategy</li>
+            <li>Deduction planning calendar</li>
+            <li>Annual tax projection report</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 4: Business & Contractors -->
+      <div class="tab-panel" id="panel-3" role="tabpanel">
+        <div class="panel-left">
+          <h3 class="panel-title">Built for Business Too</h3>
+          <p class="panel-desc">From freelancers to LLCs, we help independent contractors and business owners maximize deductions, stay compliant, and keep more of what they earn. Self-employed taxes don't have to be complicated.</p>
+          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
+             target="_blank" rel="noopener noreferrer" class="panel-cta">Book a Business Consultation</a>
+        </div>
+        <div class="panel-right">
+          <p class="panel-list-label">Business Services</p>
+          <ul class="panel-bullets">
+            <li>Self-employment tax preparation</li>
+            <li>Quarterly estimated tax filing</li>
+            <li>Business deduction maximization</li>
+            <li>LLC and S-Corp tax strategy</li>
+            <li>Contractor vs employee classification</li>
+            <li>Multi-state filing support</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       QUOTE BANNER
+  ============================================================ -->
+  <section id="quote-banner">
+    <div class="quote-inner" id="quoteBannerInner">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">You Work Hard. Your Tax Situation Shouldn't Work Against You.</p>
+      <hr class="quote-rule-bottom">
+      <p class="quote-attribution">&mdash; FISCUS MAX TAX ADVOCATES</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       GOLD COIN INTERACTIVE
+  ============================================================ -->
+  <section id="coin">
+    <div class="section-inner">
+      <div class="coin-layout">
+
+        <!-- Left: copy + stats -->
+        <div class="coin-text reveal">
+          <div class="section-tag">The Tax Gap</div>
+          <h2 class="section-title">
+            <span class="grad-dark">Millions of Families Leave Money Behind Every Year</span>
+          </h2>
+          <p class="section-body">The IRS estimates that working families miss out on thousands of dollars in refunds and credits annually — not because they're dishonest, but because no one ever showed them how to claim what they've earned.</p>
+
+          <div class="coin-facts">
+
+            <div class="coin-fact">
+              <div class="fact-icon"></div>
+              <div class="fact-content">
+                <strong>$1,200 in Average Missed Deductions</strong>
+                <span>Most families never claim work expenses, education credits, or childcare deductions they fully qualify for.</span>
+              </div>
+            </div>
+
+            <div class="coin-fact">
+              <div class="fact-icon"></div>
+              <div class="fact-content">
+                <strong>14 Million IRS Notices Sent Annually</strong>
+                <span>Most can be resolved quickly with the right representation — but ignored notices escalate into liens and levies.</span>
+              </div>
+            </div>
+
+            <div class="coin-fact">
+              <div class="fact-icon"></div>
+              <div class="fact-content">
+                <strong>Average Settlement: 40&cent; on the Dollar</strong>
+                <span>With professional negotiation, most tax debts can be settled for significantly less than what's originally owed.</span>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /coin-text -->
+
+        <!-- Right: 3D coin + canvas chart -->
+        <div class="coin-visual reveal reveal-d1">
+
+          <p class="coin-hint" id="coinHint">Hover to flip</p>
+
+          <div class="coin-scene" id="coinScene" role="button" aria-label="Flip coin to reveal statistic" tabindex="0">
+            <div class="coin-3d" id="coin3d">
+
+              <div class="coin-face coin-front">
+                <img
+                  src="/assets/images/coin%20tree%20logo.png"
+                  alt="Fiscus Max"
+                  class="coin-tree-logo"
+                />
+                <div class="coin-label-front">Fiscus Max</div>
+              </div>
+
+              <div class="coin-face coin-back">
+                <div class="coin-stat-num">60%</div>
+                <div class="coin-stat-label">Average IRS Debt Reduction</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Canvas chart — revealed after first flip -->
+          <div class="chart-wrap" id="chartWrap">
+            <div class="chart-title">Where Families Lose Money</div>
+            <canvas id="pieChart" width="240" height="240" aria-label="Pie chart showing how families lose money"></canvas>
+            <div class="chart-legend" id="chartLegend"></div>
+          </div>
+
+          <!-- Tooltip element positioned by JS -->
+          <div id="chartTooltip"></div>
+
+        </div><!-- /coin-visual -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT US
+  ============================================================ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-layout">
+
+        <!-- Left: copy -->
+        <div class="about-text reveal">
+          <div class="section-tag">Our Story</div>
+          <h2 class="section-title">
+            <span class="grad-dark">We Built This Firm for Families Like Yours</span>
+          </h2>
+
+          <p class="about-body">We've sat across from families who were embarrassed, scared, and convinced their situation was beyond repair. It never was. At Fiscus Max, we believe every working family deserves the same quality tax help that Fortune 500 companies get. We were founded by tax professionals who grew up in working-class households — we know exactly what it feels like to open that IRS letter.</p>
+
+          <p class="about-body">We built this firm because we saw too many families left alone to navigate a complicated, unforgiving tax system. Losing money they'd rightfully earned. Facing penalties they didn't know how to fight. That changes the moment you call us.</p>
+
+          <div class="about-values">
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>We fight for every dollar you're owed</span>
+            </div>
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>We explain everything in plain language</span>
+            </div>
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>We're by your side from start to finish</span>
+            </div>
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>Your consultation is always free</span>
+            </div>
+          </div>
+
+          <a href="#book" class="about-cta">Book a Free Consultation</a>
+        </div><!-- /about-text -->
+
+        <!-- Right: photo placeholder -->
+        <div class="about-photo reveal reveal-d1">
+          <div class="photo-placeholder">
+            <div class="photo-emoji"></div>
+            <div class="photo-label">Your Family's Tax Team</div>
+          </div>
+          <div class="photo-badge">
+            <span class="pb-num">500+</span>
+            <span class="pb-label">Families Served</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CAREERS
+  ============================================================ -->
+  <section id="careers">
+    <div class="section-inner">
+
+      <div class="careers-header">
+        <div class="section-tag">Join Our Team</div>
+        <h2 class="section-title reveal">
+          <span class="grad-dark">Grow With a Mission-Driven Team</span>
+        </h2>
+        <p class="careers-vision reveal reveal-d1">Our vision is to be the trusted financial partner that guides clients from their first refund to their first home, first investment, and first family trust, proving that financial freedom is within reach when someone cares enough to teach.</p>
+        <p class="careers-vision reveal reveal-d2">Our Tax Partners and Administrative team make this possible every day, working fully remotely to serve families across the country. Fiscus Max intentionally limits the number of preparers hired per region, ensuring every client receives focused, high-quality attention.</p>
+      </div>
+
+      <div class="careers-grid">
+
+        <div class="career-card reveal reveal-d1">
+          <span class="job-badge">Remote &middot; Commission-Based</span>
+          <h3 class="job-title">Tax Partner</h3>
+          <p class="job-desc">Prepare and file individual and family tax returns. Build lasting client relationships and help families maximize their refunds and resolve tax issues.</p>
+          <button class="job-cta" onclick="openJobModal('tax-partner')">View Full Description</button>
+        </div>
+
+        <div class="career-card reveal reveal-d2">
+          <span class="job-badge">Remote &middot; Part-Time</span>
+          <h3 class="job-title">Administrative Assistant</h3>
+          <p class="job-desc">Support the Fiscus Max team with client onboarding, scheduling, communications, and document management. Be the welcoming first point of contact for our clients.</p>
+          <button class="job-cta" onclick="openJobModal('admin-assistant')">View Full Description</button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CREDENTIALS
+  ============================================================ -->
+  <section id="credentials">
+    <div class="section-inner">
+
+      <div class="credentials-header reveal">
+        <div class="section-tag">Our Credentials</div>
+        <h2 class="section-title">
+          <span class="grad-gold">Qualified, Authorized &amp; Accountable</span>
+        </h2>
+        <p class="credentials-sub">When you trust someone with your taxes and your family's financial future, credentials matter. Here's what we bring to the table.</p>
+      </div>
+
+      <div class="credentials-grid" id="credentialsGrid">
+
+        <div class="cred-card">
+          <hr class="cred-rule">
+          <h3 class="cred-title">IRS Authorized Preparers</h3>
+          <p class="cred-body">Every tax professional at Fiscus Max holds an active PTIN (Preparer Tax Identification Number) issued directly by the IRS. This means we are federally recognized and legally authorized to prepare and file your return.</p>
+        </div>
+
+        <div class="cred-card">
+          <hr class="cred-rule">
+          <h3 class="cred-title">Tax Resolution Specialists</h3>
+          <p class="cred-body">Our resolution team is trained to negotiate directly with the IRS on your behalf, including Offers in Compromise, Installment Agreements, Penalty Abatements, and Currently Not Collectible status.</p>
+        </div>
+
+        <div class="cred-card">
+          <hr class="cred-rule">
+          <h3 class="cred-title">Your Information Is Safe</h3>
+          <p class="cred-body">We take client privacy seriously. All documents are handled through secure, encrypted channels. We never share your information and comply fully with IRS data security standards.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCIAL PROOF BAR
+  ============================================================ -->
+  <section id="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-block">
+        <div class="stat-num" data-target="2" data-prefix="$" data-suffix="M+">$0M+</div>
+        <span class="stat-lbl">Saved for Families</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" data-target="500" data-suffix="+">0+</div>
+        <span class="stat-lbl">Cases Resolved</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" data-target="98" data-suffix="%">0%</div>
+        <span class="stat-lbl">Client Satisfaction</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" data-target="5" data-suffix=" ★">0 ★</div>
+        <span class="stat-lbl">Average Rating</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section id="testimonials">
+    <div class="section-inner">
+
+      <div class="testimonials-header reveal">
+        <div class="section-tag">Client Stories</div>
+        <h2 class="section-title">
+          <span class="grad-gold">Real Results for Real Families</span>
+        </h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="t-card reveal reveal-d1">
+          <div class="reviewer-avatar">K</div>
+          <div class="testimonial-card-content">
+            <div>
+              <span class="t-name">Kejuan King</span>
+              <span class="t-badge">&#9733;&#9733;&#9733;&#9733;&#9733; Google Review</span>
+              <span class="t-time">3 months ago</span>
+            </div>
+            <p class="t-quote">"Keelyn was my preparer. They were very professional and transparent about the process and I walked away more knowledgeable and with the most money possible for my family. I have gone back each year with great results."</p>
+          </div>
+        </div>
+
+        <div class="t-card reveal reveal-d2">
+          <div class="reviewer-avatar">A</div>
+          <div class="testimonial-card-content">
+            <div>
+              <span class="t-name">Arnesia R</span>
+              <span class="t-badge">Local Guide &middot; &#9733;&#9733;&#9733;&#9733;&#9733; Google Review</span>
+              <span class="t-time">3 months ago</span>
+            </div>
+            <p class="t-quote">"I worked with Fiscus Max, LLC for my tax preparation, and the experience was both professional and reassuring. From the first consultation, their team made the process feel less intimidating by explaining complex tax terms in plain, easy-to-understand language. What stood out most was their attention to detail — they actively looked for deductions and credits I might have missed. This not only saved me money but also gave me confidence that my return was accurate and compliant. Overall, Fiscus Max combines expertise, transparency, and a client-first approach."</p>
+          </div>
+        </div>
+
+        <div class="t-card reveal reveal-d3">
+          <div class="reviewer-avatar">L</div>
+          <div class="testimonial-card-content">
+            <div>
+              <span class="t-name">Lorin Johnson</span>
+              <span class="t-badge">Local Guide &middot; &#9733;&#9733;&#9733;&#9733;&#9733; Google Review</span>
+              <span class="t-time">3 months ago</span>
+            </div>
+            <p class="t-quote">"They are professional and knowledgeable with a great turnaround time."</p>
+          </div>
+        </div>
+
+        <div class="t-card reveal reveal-d4">
+          <div class="reviewer-avatar">T</div>
+          <div class="testimonial-card-content">
+            <div>
+              <span class="t-name">Tammie Givens</span>
+              <span class="t-badge">&#9733;&#9733;&#9733;&#9733;&#9733; Google Review</span>
+              <span class="t-time">3 months ago</span>
+            </div>
+            <p class="t-quote">"Awesome team! Awesome experience!"</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="text-align:center; font-family:'Funnel Display',sans-serif; font-size:14px; font-weight:300; color:rgba(248,244,229,0.65); margin-top:40px;">
+        <span style="color:#d6b12f;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp; Rated 5 stars by our clients — verified reviews available upon request.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BOOK A CONSULTATION
+  ============================================================ -->
+  <section id="book">
+    <div class="section-inner">
+      <div class="book-layout">
+
+        <!-- Left: copy + checks -->
+        <div class="book-left-reveal">
+          <p class="book-eyebrow-label">Ready When You Are</p>
+          <h2 class="book-headline">
+            <span class="grad-dark">Let's Talk About What's Possible for Your Family</span>
+          </h2>
+          <p class="book-sub">Your first consultation is completely free. No obligation, no jargon, no pressure. Just an honest conversation about your situation and what we can do together.</p>
+
+          <div class="book-checks">
+
+            <div class="book-check">
+              <span class="book-check-mark">&#x2713;</span>
+              <div>
+                <strong class="book-check-label">Response within one business day</strong>
+                <span class="book-check-desc">Every request gets a personal reply, not an automated response.</span>
+              </div>
+            </div>
+
+            <div class="book-check">
+              <span class="book-check-mark">&#x2713;</span>
+              <div>
+                <strong class="book-check-label">48-hour quote turnaround</strong>
+                <span class="book-check-desc">Clear, honest pricing delivered fast so you can make confident decisions.</span>
+              </div>
+            </div>
+
+            <div class="book-check">
+              <span class="book-check-mark">&#x2713;</span>
+              <div>
+                <strong class="book-check-label">Total transparency</strong>
+                <span class="book-check-desc">You'll always know exactly where your money stands.</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div><!-- /book-left -->
+
+        <!-- Right: CTA column -->
+        <div class="book-cta-col book-right-reveal">
+          <img src="/assets/images/footer%20logo%20tree.png" alt="Fiscus Max" style="width:80px; opacity:0.85; margin-bottom:24px;">
+          <h3 class="book-cta-headline">
+            <span class="grad-dark">Book Your Free Consultation</span>
+          </h3>
+          <p class="book-cta-sub">Takes less than 2 minutes. We'll be in touch within one business day.</p>
+          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-book-primary">
+            Start Your Free Consultation
+          </a>
+          <p class="book-contact-info">469-966-9071 &middot; consult@fiscusmax.com &middot; Mon&ndash;Sun 9am&ndash;9pm</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section id="faq">
+    <div class="section-inner">
+
+      <!-- Header -->
+      <div class="faq-header">
+        <p class="faq-header-label">Common Questions</p>
+        <h2 class="faq-header-title"><span class="grad-dark">We've Got Answers</span></h2>
+        <p class="faq-header-sub">No jargon, no runaround. Just straight answers to the questions families ask us most.</p>
+      </div>
+
+      <!-- Accordion -->
+      <div class="faq-container" id="faqContainer">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">How much does it cost?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Every family's situation is different, so we always start with a free consultation. From there, we give you a clear, honest quote — no surprises.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">Can you really help if I owe back taxes?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Owing back taxes is more common than you think, and there are real solutions available. We've helped families reduce what they owe, set up manageable payment plans, and even eliminate penalties entirely.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">How long does tax resolution take?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Most cases are resolved within 3 to 6 months. We'll give you a realistic timeline upfront so you always know where things stand.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">Do I need to come in person?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Not at all. We work with families fully remotely — phone, email, or video. Whatever works best for you.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">What if I haven't filed in years?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>You're not alone, and it's never too late to get back on track. We'll walk you through every step of catching up without the fear or judgment.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">What if I've been scammed by another tax relief company?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Unfortunately it happens more than it should. If you've paid a company that didn't deliver, we can review what was done, assess where things stand with the IRS, and help you move forward. We operate with full transparency and will never ask for large upfront fees.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">Do you help with state taxes too?</span>
+            <span class="faq-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. We handle both federal and state tax preparation and resolution. Since we serve clients nationwide, we are experienced working with tax authorities across multiple states.</p>
+          </div>
+        </div>
+
+      </div><!-- /faq-container -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BLOG / RESOURCES
+  ============================================================ -->
+  <section id="blog">
+    <div class="section-inner">
+
+      <div class="blog-header reveal">
+        <div class="section-tag">Tax Resources</div>
+        <h2 class="section-title">
+          <span class="grad-dark">Knowledge That Puts Money in Your Pocket</span>
+        </h2>
+      </div>
+
+      <div class="blog-grid">
+
+        <article class="blog-card reveal reveal-d1">
+          <div class="blog-thumb">
+            <span class="blog-thumb-emoji">📝</span>
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">Tax Tips</span>
+            <h3 class="blog-title">5 Tax Deductions Working Families Miss Every Year</h3>
+            <p class="blog-excerpt">From childcare credits to home office deductions, these commonly overlooked write-offs could put hundreds — even thousands — back in your pocket this season.</p>
+            <button class="blog-link" onclick="openBlogModal(0)">Read article <span class="blog-arrow">→</span></button>
+          </div>
+        </article>
+
+        <article class="blog-card reveal reveal-d2">
+          <div class="blog-thumb">
+            <span class="blog-thumb-emoji">✉️</span>
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">IRS Help</span>
+            <h3 class="blog-title">What to Do When You Receive an IRS Letter</h3>
+            <p class="blog-excerpt">Don't panic. Most IRS letters aren't as serious as they look — but ignoring them is always a mistake. Here's exactly what to do in the first 48 hours.</p>
+            <button class="blog-link" onclick="openBlogModal(1)">Read article <span class="blog-arrow">→</span></button>
+          </div>
+        </article>
+
+        <article class="blog-card reveal reveal-d3">
+          <div class="blog-thumb">
+            <span class="blog-thumb-emoji">🗓️</span>
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">Resolution</span>
+            <h3 class="blog-title">IRS Payment Plans Explained: What You Need to Know</h3>
+            <p class="blog-excerpt">Can't pay your tax bill in full? The IRS offers several payment options. We break down each one so you can find the right path forward for your family.</p>
+            <button class="blog-link" onclick="openBlogModal(2)">Read article <span class="blog-arrow">→</span></button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       LAST CHANCE INTAKE
+  ============================================================ -->
+  <section id="lastchance">
+    <div class="lc-inner">
+
+      <img
+        src="/assets/images/footer%20logo%20tree.png"
+        alt="Fiscus Max"
+        class="lc-tree"
+      />
+
+      <span class="lc-pill">&#x25CF; Before You Go</span>
+
+      <h2 class="lc-headline">Most Families Are One Emergency Away From Crisis.</h2>
+
+      <p class="lc-sub">Fiscus Max helps you build the financial foundation your family needs.</p>
+
+      <p class="lc-body">With us, you're always protected, prepared, and growing. Don't leave this page without taking the first step, it's free, it's simple, and it could change everything for your family.</p>
+
+      <div class="lc-contact-bar">
+        <span class="lc-contact-item">&#128222; 469-966-9071 (Text Us!)</span>
+        <span class="lc-divider"></span>
+        <span class="lc-contact-item">&#127760; www.fiscusmax.com</span>
+        <span class="lc-divider"></span>
+        <span class="lc-contact-item">&#128205; Dallas, Texas</span>
+      </div>
+
+      <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1" target="_blank" rel="noopener noreferrer" class="lc-cta">Book Your Free Consultation Now</a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       JOB MODAL
+  ============================================================ -->
+  <div id="jobModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="jobModalTitle">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('jobModal')" aria-label="Close">&times;</button>
+      <span class="modal-badge" id="jobModalBadge"></span>
+      <h2 class="modal-title" id="jobModalTitle"></h2>
+      <ul class="modal-list" id="jobModalList"></ul>
+      <a href="mailto:office@fiscusmax.com" class="modal-cta">Send Your Resume</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BLOG MODAL
+  ============================================================ -->
+  <div id="blogModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('blogModal')" aria-label="Close">&times;</button>
+      <div class="modal-img">
+        <span class="modal-img-emoji" id="blogModalEmoji"></span>
+      </div>
+      <span class="modal-tag" id="blogModalTag"></span>
+      <h2 class="modal-title" id="blogModalTitle"></h2>
+      <div class="modal-body" id="blogModalBody"></div>
+      <a href="#" class="modal-share">Share This Article ↗</a>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<script>
+  // ============================================================
+  // SCROLL REVEAL — fade-in-up for all .reveal elements
+  // ============================================================
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ============================================================
+  // HERO CARDS — spring-in via IntersectionObserver, then float
+  // ============================================================
+  const heroCard1 = document.getElementById('heroCard1') as HTMLElement;
+  const heroCard2 = document.getElementById('heroCard2') as HTMLElement;
+  const cardWraps = [heroCard1, heroCard2];
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (!entries[0].isIntersecting) return;
+
+    cardWraps.forEach((wrap, i) => {
+      setTimeout(() => {
+        wrap.classList.add('spring-in');
+
+        wrap.addEventListener('animationend', () => {
+          wrap.style.opacity = '1';
+          wrap.classList.remove('spring-in');
+          wrap.classList.add(`float-${i + 1}`);
+        }, { once: true });
+
+      }, i * 250);
+    });
+
+    heroObserver.disconnect();
+  }, { threshold: 0.15 });
+
+  const heroSection = document.getElementById('hero');
+  if (heroSection) heroObserver.observe(heroSection);
+
+  // ============================================================
+  // GOLD COIN — flip on hover (CSS) + click/tap (JS)
+  // ============================================================
+  const coinScene  = document.getElementById('coinScene') as HTMLElement;
+  const coin3d     = document.getElementById('coin3d') as HTMLElement;
+  const coinHintEl = document.getElementById('coinHint') as HTMLElement;
+  const chartWrap  = document.getElementById('chartWrap') as HTMLElement;
+  let coinFlipped  = false;
+  let chartDrawn   = false;
+
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    coinHintEl.textContent = 'Tap to flip';
+  }
+
+  function flipCoin() {
+    coinFlipped = !coinFlipped;
+    coin3d.classList.toggle('flipped', coinFlipped);
+    if (coinFlipped && !chartDrawn) triggerChart();
+  }
+
+  coinScene.addEventListener('click', flipCoin);
+  coinScene.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipCoin(); }
+  });
+
+  coinScene.addEventListener('mouseenter', () => {
+    if (!chartDrawn) triggerChart();
+  });
+
+  function triggerChart() {
+    chartDrawn = true;
+    setTimeout(() => {
+      chartWrap.classList.add('visible');
+      drawPieChart();
+    }, 440);
+  }
+
+  // ============================================================
+  // CANVAS PIE / DONUT CHART
+  // ============================================================
+  const PIE_DATA = [
+    { label: 'Missed Deductions',    pct: 35, color: '#114b1c' },
+    { label: 'Unclaimed Credits',    pct: 28, color: '#211057' },
+    { label: 'IRS Penalty Interest', pct: 20, color: '#d6b12f' },
+    { label: 'Filing Errors',        pct: 17, color: '#b5923b' },
+  ];
+
+  function drawPieChart() {
+    const canvas   = document.getElementById('pieChart') as HTMLCanvasElement;
+    const ctx      = canvas.getContext('2d')!;
+    const cx       = canvas.width  / 2;
+    const cy       = canvas.height / 2;
+    const R        = Math.min(cx, cy) - 14;
+    const HOLE     = R * 0.52;
+    const START    = -Math.PI / 2;
+    const DURATION = 1100;
+
+    const legend = document.getElementById('chartLegend') as HTMLElement;
+    legend.innerHTML = PIE_DATA.map(d =>
+      `<div class="legend-row">
+        <div class="legend-swatch" style="background:${d.color}"></div>
+        ${d.label} — ${d.pct}%
+      </div>`
+    ).join('');
+
+    const slices: Array<{label: string; pct: number; color: string; startA: number; endA: number}> = [];
+    let a = START;
+    PIE_DATA.forEach(d => {
+      const sweep = (d.pct / 100) * 2 * Math.PI;
+      slices.push({ ...d, startA: a, endA: a + sweep });
+      a += sweep;
+    });
+
+    const t0 = performance.now();
+    function frame(now: number) {
+      const progress = Math.min((now - t0) / DURATION, 1);
+      const ease     = 1 - Math.pow(1 - progress, 3);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      slices.forEach(s => {
+        const sweep = (s.endA - s.startA) * ease;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, R, s.startA, s.startA + sweep);
+        ctx.closePath();
+        ctx.fillStyle = s.color;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, R + 0.5, s.startA, s.startA + sweep);
+        ctx.strokeStyle = '#f8f4e5';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, HOLE, 0, 2 * Math.PI);
+      ctx.fillStyle = '#f8f4e5';
+      ctx.fill();
+
+      if (progress >= 1) {
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle    = '#114b1c';
+        ctx.font         = `bold 17px 'DM Serif Display', serif`;
+        ctx.fillText('Annual', cx, cy - 9);
+        ctx.font      = `13px 'Funnel Display', sans-serif`;
+        ctx.fillStyle = '#888';
+        ctx.fillText('losses', cx, cy + 10);
+      }
+
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    const tooltip = document.getElementById('chartTooltip') as HTMLElement;
+    const canvasRect = () => canvas.getBoundingClientRect();
+
+    canvas.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = canvasRect();
+      const mx   = (e.clientX - rect.left)  * (canvas.width  / rect.width);
+      const my   = (e.clientY - rect.top)   * (canvas.height / rect.height);
+      const dx   = mx - cx;
+      const dy   = my - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist > HOLE && dist < R) {
+        let normAngle = Math.atan2(dy, dx) - START;
+        if (normAngle < 0) normAngle += 2 * Math.PI;
+
+        const hit = slices.find(s => {
+          const sa = s.startA - START < 0 ? s.startA - START + 2 * Math.PI : s.startA - START;
+          const ea = s.endA   - START < 0 ? s.endA   - START + 2 * Math.PI : s.endA   - START;
+          return normAngle >= sa && normAngle < ea;
+        });
+
+        if (hit) {
+          tooltip.textContent = `${hit.label}: ${hit.pct}%`;
+          tooltip.style.opacity = '1';
+          tooltip.style.left = `${e.clientX - canvasRect().left + 12}px`;
+          tooltip.style.top  = `${e.clientY - canvasRect().top  - 28}px`;
+          canvas.style.cursor = 'pointer';
+        }
+      } else {
+        tooltip.style.opacity = '0';
+        canvas.style.cursor   = 'default';
+      }
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+      canvas.style.cursor   = 'default';
+    });
+  }
+
+  // ============================================================
+  // FAQ ACCORDION — one item open at a time
+  // ============================================================
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question') as HTMLButtonElement;
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(i => {
+        i.classList.remove('active');
+        (i.querySelector('.faq-question') as HTMLButtonElement).setAttribute('aria-expanded', 'false');
+      });
+      if (!isActive) {
+        item.classList.add('active');
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  const faqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const items = entry.target.querySelectorAll('.faq-item');
+        items.forEach((item, i) => {
+          setTimeout(() => item.classList.add('faq-in'), i * 80);
+        });
+        faqObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const faqContainer = document.getElementById('faqContainer');
+  if (faqContainer) faqObserver.observe(faqContainer);
+
+  // ============================================================
+  // CREDENTIALS CARDS — staggered fade-in
+  // ============================================================
+  const credGrid = document.getElementById('credentialsGrid');
+  if (credGrid) {
+    const credCards = credGrid.querySelectorAll('.cred-card');
+    const credObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          credCards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('cred-visible'), i * 150);
+          });
+          credObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    credObserver.observe(credGrid);
+  }
+
+  // ============================================================
+  // SOCIAL PROOF BAR — count-up animation
+  // ============================================================
+  const statsBar = document.getElementById('stats-bar');
+  if (statsBar) {
+    const statNums = statsBar.querySelectorAll('.stat-num');
+
+    function animateCount(el: Element) {
+      const target  = parseFloat((el as HTMLElement).dataset.target || '0');
+      const suffix  = (el as HTMLElement).dataset.suffix || '';
+      const prefix  = (el as HTMLElement).dataset.prefix || '';
+      const isDecimal = String(target).includes('.');
+      const duration = 1500;
+      const start = performance.now();
+
+      function step(now: number) {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const value = target * ease;
+        el.textContent = prefix + (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statNums.forEach(el => animateCount(el));
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    countObserver.observe(statsBar);
+  }
+
+  // ============================================================
+  // BOOK SECTION — slide-in reveals
+  // ============================================================
+  const bookLeft  = document.querySelector('.book-left-reveal');
+  const bookRight = document.querySelector('.book-right-reveal');
+  if (bookLeft || bookRight) {
+    const bookObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('book-revealed');
+          bookObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    if (bookLeft)  bookObserver.observe(bookLeft);
+    if (bookRight) bookObserver.observe(bookRight);
+  }
+
+  // ============================================================
+  // QUOTE BANNER — fade-in on scroll
+  // ============================================================
+  const qbInner = document.getElementById('quoteBannerInner');
+  if (qbInner) {
+    const qbObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('qb-visible');
+          qbObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    qbObserver.observe(qbInner);
+  }
+
+  // ============================================================
+  // SERVICES — tab switching + section scroll reveal
+  // ============================================================
+  const tabBtns   = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      tabPanels[i].classList.add('active');
+    });
+  });
+
+  const servicesInner = document.getElementById('servicesInner');
+  if (servicesInner) {
+    const svcObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('svc-visible');
+          svcObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    svcObserver.observe(servicesInner);
+  }
+
+  // ============================================================
+  // PAIN POINT CARDS — staggered fade-in
+  // ============================================================
+  const painGrid = document.getElementById('painGrid');
+  if (painGrid) {
+    const painCards = painGrid.querySelectorAll('.pain-card');
+    const painObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          painCards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('pain-visible'), i * 150);
+          });
+          painObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    painObserver.observe(painGrid);
+  }
+
+  // ============================================================
+  // LAST CHANCE SECTION — fade-in from below
+  // ============================================================
+  const lcInner = document.querySelector('#lastchance .lc-inner');
+  if (lcInner) {
+    const lcObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lc-visible');
+          lcObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    lcObserver.observe(lcInner);
+  }
+
+  // ============================================================
+  // MODAL SYSTEM — job modals + blog quick-view
+  // ============================================================
+  const JOB_DATA: Record<string, {title: string; badge: string; items: string[]}> = {
+    'tax-partner': {
+      title: 'Tax Partner',
+      badge: 'Remote · Commission-Based',
+      items: [
+        'Prepare federal and state tax returns for individuals and families',
+        'Identify applicable credits and deductions',
+        'Communicate clearly with clients throughout the filing process',
+        'Support tax resolution cases as needed',
+        'Must be IRS authorized (PTIN required) or willing to obtain certification',
+        'Work fully remotely on a flexible schedule',
+        'Commission-based compensation structure',
+        'Limited openings per region — apply early',
+      ]
+    },
+    'admin-assistant': {
+      title: 'Administrative Assistant',
+      badge: 'Remote · Part-Time',
+      items: [
+        'Manage client intake forms and document collection',
+        'Schedule consultations and follow up with leads',
+        'Handle email and phone communications professionally',
+        'Maintain organized digital records',
+        'Support tax partners during peak filing season',
+        'Must be detail-oriented, reliable, and comfortable working remotely',
+        'Part-time hours with potential to grow',
+      ]
+    }
+  };
+
+  const BLOG_DATA = [
+    {
+      title: '5 Tax Deductions Working Families Miss Every Year',
+      tag: 'Tax Tips',
+      emoji: '📝',
+      body: [
+        'Every year, millions of working families leave money on the table simply because they don\'t know what they\'re entitled to claim. The tax code is vast, and without expert guidance, it\'s easy to overlook credits and deductions that could put hundreds or even thousands of dollars back in your pocket.',
+        'The Child and Dependent Care Credit alone can offset thousands of dollars in childcare expenses, yet many families fail to claim it. Similarly, the Earned Income Tax Credit is one of the most valuable credits available, but it\'s also one of the most frequently missed, particularly by self-employed parents.',
+        'Home office deductions, student loan interest, educator expenses, and health savings account contributions are all commonly overlooked. If you work from home even part of the time, you may qualify for deductions that significantly reduce your taxable income.',
+        'The best way to make sure you\'re claiming everything you\'re owed is to work with a tax professional who knows your situation. At Fiscus Max, we review every return for missed opportunities, and we guarantee accuracy.'
+      ]
+    },
+    {
+      title: 'What to Do When You Receive an IRS Letter',
+      tag: 'IRS Help',
+      emoji: '✉️',
+      body: [
+        'Receiving a letter from the IRS can be alarming, but most IRS correspondence is not as serious as it first appears. The key is to respond promptly and accurately. Ignoring an IRS letter almost always makes the situation worse.',
+        'The first step is to read the letter carefully. Most IRS notices are about specific issues: a correction to your return, a balance due, a request for additional information, or a notice of audit. The letter will include a notice number that tells you exactly what the issue is.',
+        'Do not call the number on the letter immediately. Instead, verify the notice number on the IRS website or consult a tax professional. Scam letters that mimic IRS correspondence are common, and it\'s important to confirm authenticity before taking action.',
+        'If the letter is legitimate and you owe money, you have options including installment agreements, offers in compromise, and penalty abatements. At Fiscus Max, we handle IRS correspondence on your behalf so you never have to face them alone.'
+      ]
+    },
+    {
+      title: 'IRS Payment Plans Explained: What You Need to Know',
+      tag: 'Resolution',
+      emoji: '🗓️',
+      body: [
+        'If you owe taxes you can\'t pay in full, you\'re not alone, and you have more options than you might think. The IRS offers several payment arrangements designed to help taxpayers get into compliance without financial hardship.',
+        'The most common option is an Installment Agreement, which lets you pay your balance over time in monthly payments. Short-term agreements can be set up for balances under $100,000. Long-term agreements are available for larger amounts and longer repayment periods.',
+        'For taxpayers in significant financial hardship, the Offer in Compromise program may allow you to settle your tax debt for less than the full amount owed. The IRS evaluates your ability to pay, income, expenses, and asset equity before accepting or rejecting an offer.',
+        'Currently Not Collectible status is another option. If the IRS determines you cannot pay your basic living expenses and still make payments, they may temporarily halt collection activity. At Fiscus Max, we evaluate every option to find the best resolution path for your situation.'
+      ]
+    }
+  ];
+
+  function openModal(id: string) {
+    const overlay = document.getElementById(id) as HTMLElement;
+    overlay.classList.add('modal-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id: string) {
+    const overlay = document.getElementById(id) as HTMLElement;
+    overlay.classList.remove('modal-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function openJobModal(jobId: string) {
+    const job = JOB_DATA[jobId];
+    (document.getElementById('jobModalBadge') as HTMLElement).textContent = job.badge;
+    (document.getElementById('jobModalTitle') as HTMLElement).textContent = job.title;
+    (document.getElementById('jobModalList') as HTMLElement).innerHTML = job.items.map(item => `<li>${item}</li>`).join('');
+    openModal('jobModal');
+  }
+
+  function openBlogModal(idx: number) {
+    const post = BLOG_DATA[idx];
+    (document.getElementById('blogModalEmoji') as HTMLElement).textContent = post.emoji;
+    (document.getElementById('blogModalTag') as HTMLElement).textContent = post.tag;
+    (document.getElementById('blogModalTitle') as HTMLElement).textContent = post.title;
+    (document.getElementById('blogModalBody') as HTMLElement).innerHTML = post.body.map(p => `<p>${p}</p>`).join('');
+    openModal('blogModal');
+  }
+
+  // Expose modal functions globally for inline onclick handlers
+  (window as any).openJobModal  = openJobModal;
+  (window as any).openBlogModal = openBlogModal;
+  (window as any).closeModal    = closeModal;
+
+  // Close on overlay background click
+  ['jobModal', 'blogModal'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', function(this: HTMLElement, e: Event) {
+      if (e.target === this) closeModal(id);
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      ['jobModal', 'blogModal'].forEach(id => closeModal(id));
+    }
+  });
+</script>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'tier3' | 'book-primary' | 'book-now' | 'lc';
+  target?: string;
+  rel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  label,
+  variant = 'primary',
+  target,
+  rel,
+  class: extraClass,
+} = Astro.props;
+
+const variantClass: Record<string, string> = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  tier3: 'btn-tier3',
+  'book-primary': 'btn-book-primary',
+  'book-now': 'btn-book-now',
+  lc: 'lc-cta',
+};
+
+const cls = [variantClass[variant], extraClass].filter(Boolean).join(' ');
+---
+
+<a href={href} class={cls} target={target} rel={rel}>
+  <slot>{label}</slot>
+</a>

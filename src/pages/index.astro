@@ -420,15 +420,33 @@ import CTAButton from '../components/CTAButton.astro';
           <a href="#book" class="about-cta">Book a Free Consultation</a>
         </div><!-- /about-text -->
 
-        <!-- Right: photo placeholder -->
+        <!-- Right: team headshots -->
         <div class="about-photo reveal reveal-d1">
-          <div class="photo-placeholder">
-            <div class="photo-emoji"></div>
-            <div class="photo-label">Your Family's Tax Team</div>
+          <div class="about-stat">
+            <span class="about-stat-number">500+</span>
+            <div class="about-stat-label">Families Served</div>
           </div>
-          <div class="photo-badge">
-            <span class="pb-num">500+</span>
-            <span class="pb-label">Families Served</span>
+          <div class="team-grid">
+            <div class="team-card reveal reveal-d1">
+              <img src="/assets/images/keelyng_headshot_darkwood(1).png" alt="Keelyn Givens" class="team-headshot" />
+              <div class="team-name">Keelyn Givens</div>
+              <div class="team-title">CEO / Co-Founder</div>
+            </div>
+            <div class="team-card reveal reveal-d2">
+              <img src="/assets/images/ChelseaL_Headshot.png" alt="Chelsea Leggett" class="team-headshot" />
+              <div class="team-name">Chelsea Leggett</div>
+              <div class="team-title">People &amp; Insurance Director / Co-Founder</div>
+            </div>
+            <div class="team-card reveal reveal-d3">
+              <img src="/assets/images/grantwallace_headshot.png" alt="Grant Wallace" class="team-headshot" />
+              <div class="team-name">Grant Wallace</div>
+              <div class="team-title">Brand Operations Director</div>
+            </div>
+            <div class="team-card reveal reveal-d4">
+              <img src="/assets/images/EbonyC_Generatedheadshot(1)_3-27-26.png" alt="Ebony Caffey" class="team-headshot" />
+              <div class="team-name">Ebony Caffey</div>
+              <div class="team-title">Fiscus Max Certified Tax Preparer</div>
+            </div>
           </div>
         </div>
 
@@ -575,6 +593,16 @@ import CTAButton from '../components/CTAButton.astro';
             </div>
             <p class="t-quote">"I worked with Fiscus Max, LLC for my tax preparation, and the experience was both professional and reassuring. From the first consultation, their team made the process feel less intimidating by explaining complex tax terms in plain, easy-to-understand language. What stood out most was their attention to detail — they actively looked for deductions and credits I might have missed. This not only saved me money but also gave me confidence that my return was accurate and compliant. Overall, Fiscus Max combines expertise, transparency, and a client-first approach."</p>
           </div>
+        </div>
+
+        <div class="review-cta-center">
+          <a href="https://share.google/AoKRWxzAbIfupgznW"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-leave-review">
+            &#9733; Leave Us a Review
+          </a>
+          <p class="review-cta-sub">Your review helps families find the help they need</p>
         </div>
 
         <div class="t-card reveal reveal-d3">
@@ -811,9 +839,7 @@ import CTAButton from '../components/CTAButton.astro';
       <div class="blog-grid">
 
         <article class="blog-card reveal reveal-d1">
-          <div class="blog-thumb">
-            <span class="blog-thumb-emoji">📝</span>
-          </div>
+          <img src="/assets/images/blog_image_1.png" alt="Tax tips for working families" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
           <div class="blog-content">
             <span class="blog-tag">Tax Tips</span>
             <h3 class="blog-title">5 Tax Deductions Working Families Miss Every Year</h3>
@@ -823,9 +849,7 @@ import CTAButton from '../components/CTAButton.astro';
         </article>
 
         <article class="blog-card reveal reveal-d2">
-          <div class="blog-thumb">
-            <span class="blog-thumb-emoji">✉️</span>
-          </div>
+          <img src="/assets/images/blog_image_2.png" alt="IRS tax resolution help" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
           <div class="blog-content">
             <span class="blog-tag">IRS Help</span>
             <h3 class="blog-title">What to Do When You Receive an IRS Letter</h3>
@@ -835,9 +859,7 @@ import CTAButton from '../components/CTAButton.astro';
         </article>
 
         <article class="blog-card reveal reveal-d3">
-          <div class="blog-thumb">
-            <span class="blog-thumb-emoji">🗓️</span>
-          </div>
+          <img src="/assets/images/blog_image_3.png" alt="Family tax planning" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
           <div class="blog-content">
             <span class="blog-tag">Resolution</span>
             <h3 class="blog-title">IRS Payment Plans Explained: What You Need to Know</h3>
@@ -905,6 +927,7 @@ import CTAButton from '../components/CTAButton.astro';
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('blogModal')" aria-label="Close">&times;</button>
       <div class="modal-img">
+        <img id="blogModalImg" class="blog-modal-img" src="" alt="" style="width:100%; height:200px; object-fit:cover; border-radius:8px; display:none; margin-bottom:8px;">
         <span class="modal-img-emoji" id="blogModalEmoji"></span>
       </div>
       <span class="modal-tag" id="blogModalTag"></span>
@@ -1392,12 +1415,29 @@ import CTAButton from '../components/CTAButton.astro';
     openModal('jobModal');
   }
 
+  const BLOG_IMAGES = [
+    '/assets/images/blog_image_1.png',
+    '/assets/images/blog_image_2.png',
+    '/assets/images/blog_image_3.png',
+  ];
+
   function openBlogModal(idx: number) {
     const post = BLOG_DATA[idx];
     (document.getElementById('blogModalEmoji') as HTMLElement).textContent = post.emoji;
     (document.getElementById('blogModalTag') as HTMLElement).textContent = post.tag;
     (document.getElementById('blogModalTitle') as HTMLElement).textContent = post.title;
     (document.getElementById('blogModalBody') as HTMLElement).innerHTML = post.body.map(p => `<p>${p}</p>`).join('');
+    const modalImg = document.getElementById('blogModalImg') as HTMLImageElement;
+    const modalEmoji = document.getElementById('blogModalEmoji') as HTMLElement;
+    if (modalImg && BLOG_IMAGES[idx]) {
+      modalImg.src = BLOG_IMAGES[idx];
+      modalImg.alt = post.title;
+      modalImg.style.display = 'block';
+      if (modalEmoji) modalEmoji.style.display = 'none';
+    } else {
+      if (modalImg) modalImg.style.display = 'none';
+      if (modalEmoji) modalEmoji.style.display = '';
+    }
     openModal('blogModal');
   }
 

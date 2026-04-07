@@ -604,12 +604,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .quote-inner.qb-visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1109,12 +1103,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .services-inner {
       max-width: 960px;
       margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    }
-
-    .services-inner.svc-visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -2059,41 +2047,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <div class="section-divider"></div>
 
-  <!-- ============================================================
-       CAREERS
-  ============================================================ -->
-  <section id="careers">
-    <div class="section-inner">
-
-      <div class="careers-header">
-        <div class="section-tag">Join Our Team</div>
-        <h2 class="section-title reveal">
-          <span class="grad-dark">Grow With a Mission-Driven Team</span>
-        </h2>
-        <p class="careers-vision reveal reveal-d1">Our vision is to be the trusted financial partner that guides clients from their first refund to their first home, first investment, and first family trust, proving that financial freedom is within reach when someone cares enough to teach.</p>
-        <p class="careers-vision reveal reveal-d2">Our Tax Partners and Administrative team make this possible every day, working fully remotely to serve families across the country. Fiscus Max intentionally limits the number of preparers hired per region, ensuring every client receives focused, high-quality attention.</p>
-      </div>
-
-      <div class="careers-grid">
-
-        <div class="career-card reveal reveal-d1">
-          <span class="job-badge">Remote &middot; Commission-Based</span>
-          <h3 class="job-title">Tax Partner</h3>
-          <p class="job-desc">Prepare and file individual and family tax returns. Build lasting client relationships and help families maximize their refunds and resolve tax issues.</p>
-          <button class="job-cta" onclick="openJobModal('tax-partner')">View Full Description</button>
-        </div>
-
-        <div class="career-card reveal reveal-d2">
-          <span class="job-badge">Remote &middot; Part-Time</span>
-          <h3 class="job-title">Administrative Assistant</h3>
-          <p class="job-desc">Support the Fiscus Max team with client onboarding, scheduling, communications, and document management. Be the welcoming first point of contact for our clients.</p>
-          <button class="job-cta" onclick="openJobModal('admin-assistant')">View Full Description</button>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
 
 
   <script>
@@ -2567,20 +2520,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     .book-left-reveal {
-      opacity: 0;
-      transform: translateX(-24px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .book-right-reveal {
-      opacity: 0;
-      transform: translateX(24px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      transition-delay: 150ms;
-    }
-
-    .book-left-reveal.book-revealed,
-    .book-right-reveal.book-revealed {
       opacity: 1;
       transform: translateX(0);
     }
@@ -3134,10 +3078,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Right: photo placeholder -->
         <div class="about-photo reveal reveal-d1">
-          <div class="about-stat">
-            <span class="about-stat-number">500+</span>
-            <div class="about-stat-label">Families Served</div>
-          </div>
           <div class="team-grid">
             <div class="team-card reveal reveal-d1">
               <img src="/assets/images/keelyng_headshot_darkwood(1).png" alt="Keelyn Givens" class="team-headshot" />
@@ -3163,6 +3103,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
       </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CAREERS
+  ============================================================ -->
+  <section id="careers">
+    <div class="section-inner">
+
+      <div class="careers-header">
+        <div class="section-tag">Join Our Team</div>
+        <h2 class="section-title reveal">
+          <span class="grad-dark">Grow With a Mission-Driven Team</span>
+        </h2>
+        <p class="careers-vision reveal reveal-d1">Our vision is to be the trusted financial partner that guides clients from their first refund to their first home, first investment, and first family trust, proving that financial freedom is within reach when someone cares enough to teach.</p>
+        <p class="careers-vision reveal reveal-d2">Our Tax Partners and Administrative team make this possible every day, working fully remotely to serve families across the country. Fiscus Max intentionally limits the number of preparers hired per region, ensuring every client receives focused, high-quality attention.</p>
+      </div>
+
+      <div class="careers-grid">
+
+        <div class="career-card reveal reveal-d1">
+          <span class="job-badge">Remote &middot; Commission-Based</span>
+          <h3 class="job-title">Tax Partner</h3>
+          <p class="job-desc">Prepare and file individual and family tax returns. Build lasting client relationships and help families maximize their refunds and resolve tax issues.</p>
+          <button class="job-cta" onclick="openJobModal('tax-partner')">View Full Description</button>
+        </div>
+
+        <div class="career-card reveal reveal-d2">
+          <span class="job-badge">Remote &middot; Part-Time</span>
+          <h3 class="job-title">Administrative Assistant</h3>
+          <p class="job-desc">Support the Fiscus Max team with client onboarding, scheduling, communications, and document management. Be the welcoming first point of contact for our clients.</p>
+          <button class="job-cta" onclick="openJobModal('admin-assistant')">View Full Description</button>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -4310,39 +4287,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // ============================================================
 
-    // ============================================================
-    // BOOK SECTION , slide-in reveals
-    // ============================================================
-    const bookLeft  = document.querySelector('.book-left-reveal');
-    const bookRight = document.querySelector('.book-right-reveal');
-    if (bookLeft || bookRight) {
-      const bookObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('book-revealed');
-            bookObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      if (bookLeft)  bookObserver.observe(bookLeft);
-      if (bookRight) bookObserver.observe(bookRight);
-    }
 
-    // ============================================================
-    // QUOTE BANNER , fade-in on scroll
-    // ============================================================
-    const qbInner = document.getElementById('quoteBannerInner');
-    if (qbInner) {
-      const qbObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('qb-visible');
-            qbObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.25 });
-      qbObserver.observe(qbInner);
-    }
 
     // ============================================================
     // SERVICES , tab switching + section scroll reveal
@@ -4360,18 +4305,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
-    const servicesInner = document.getElementById('servicesInner');
-    if (servicesInner) {
-      const svcObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('svc-visible');
-            svcObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      svcObserver.observe(servicesInner);
-    }
 
 
     // ============================================================

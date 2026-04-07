@@ -475,6 +475,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin: 0 auto;
     }
 
+    @keyframes painCardIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .pain-card {
       background: #114b1c;
       border-radius: 16px;
@@ -486,17 +491,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       gap: 8px;
       border: 1px solid transparent;
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      /* scroll reveal start state */
-      opacity: 0;
-      transform: translateY(24px);
+      animation: painCardIn 0.5s ease-out both;
     }
 
-    .pain-card.pain-visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out,
-                  border-color 0.3s ease, box-shadow 0.3s ease;
-    }
+    .painpoints-grid .pain-card:nth-child(1) { animation-delay: 0.0s; }
+    .painpoints-grid .pain-card:nth-child(2) { animation-delay: 0.15s; }
+    .painpoints-grid .pain-card:nth-child(3) { animation-delay: 0.30s; }
+    .painpoints-grid .pain-card:nth-child(4) { animation-delay: 0.45s; }
 
     .pain-card:hover {
       border-color: #d6b12f;
@@ -2809,20 +2810,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin: 0 auto;
     }
 
+    @keyframes credCardIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .cred-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(214, 177, 47, 0.2);
       border-radius: 12px;
       padding: 28px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      animation: credCardIn 0.5s ease-out both;
     }
 
-    .cred-card.cred-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .credentials-grid .cred-card:nth-child(1) { animation-delay: 0.0s; }
+    .credentials-grid .cred-card:nth-child(2) { animation-delay: 0.15s; }
+    .credentials-grid .cred-card:nth-child(3) { animation-delay: 0.30s; }
 
     .cred-icon {
       display: none;
@@ -4304,24 +4307,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // ============================================================
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // ============================================================
-    // CREDENTIALS CARDS , staggered fade-in
-    // ============================================================
-    const credGrid = document.getElementById('credentialsGrid');
-    if (credGrid) {
-      const credCards = credGrid.querySelectorAll('.cred-card');
-      const credObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            credCards.forEach((card, i) => {
-              setTimeout(() => card.classList.add('cred-visible'), i * 150);
-            });
-            credObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      credObserver.observe(credGrid);
-    }
 
     // ============================================================
 
@@ -4388,24 +4373,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       svcObserver.observe(servicesInner);
     }
 
-    // ============================================================
-    // PAIN POINT CARDS , staggered fade-in
-    // ============================================================
-    const painGrid = document.getElementById('painGrid');
-    if (painGrid) {
-      const painCards = painGrid.querySelectorAll('.pain-card');
-      const painObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            painCards.forEach((card, i) => {
-              setTimeout(() => card.classList.add('pain-visible'), i * 150);
-            });
-            painObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      painObserver.observe(painGrid);
-    }
 
     // ============================================================
     // LAST CHANCE SECTION , fade-in from below

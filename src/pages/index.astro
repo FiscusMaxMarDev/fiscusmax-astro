@@ -2059,166 +2059,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="section-divider"></div>
 
   <!-- ============================================================
-       GOLD COIN INTERACTIVE
-  ============================================================ -->
-  <section id="coin">
-    <div class="section-inner">
-      <div class="coin-layout">
-
-        <!-- Left: copy + stats -->
-        <div class="coin-text reveal">
-          <div class="section-tag">The Tax Gap</div>
-          <h2 class="section-title">
-            <span class="grad-dark">Millions of Families Leave Money Behind Every Year</span>
-          </h2>
-          <p class="section-body">The IRS estimates that working families miss out on thousands of dollars in refunds and credits annually , not because they're dishonest, but because no one ever showed them how to claim what they've earned.</p>
-
-          <div class="coin-facts">
-
-            <div class="coin-fact">
-              <div class="fact-icon"></div>
-              <div class="fact-content">
-                <strong>$1,200 in Average Missed Deductions</strong>
-                <span>Most families never claim work expenses, education credits, or childcare deductions they fully qualify for.</span>
-              </div>
-            </div>
-
-            <div class="coin-fact">
-              <div class="fact-icon"></div>
-              <div class="fact-content">
-                <strong>14 Million IRS Notices Sent Annually</strong>
-                <span>Most can be resolved quickly with the right representation , but ignored notices escalate into liens and levies.</span>
-              </div>
-            </div>
-
-            <div class="coin-fact">
-              <div class="fact-icon"></div>
-              <div class="fact-content">
-                <strong>Average Settlement: 40¢ on the Dollar</strong>
-                <span>With professional negotiation, most tax debts can be settled for significantly less than what's originally owed.</span>
-              </div>
-            </div>
-
-          </div>
-        </div><!-- /coin-text -->
-
-        <!-- Right: 3D coin + canvas chart -->
-        <div class="coin-visual reveal reveal-d1">
-
-          <p class="coin-hint" id="coinHint">Hover to flip</p>
-
-          <div class="coin-scene" id="coinScene" role="button" aria-label="Flip coin to reveal statistic" tabindex="0">
-            <div class="coin-3d" id="coin3d">
-
-              <div class="coin-face coin-front">
-                <img
-                  src="/assets/images/coin%20tree%20logo.png"
-                  alt="Fiscus Max"
-                  class="coin-tree-logo"
-                />
-                <div class="coin-label-front">Fiscus Max</div>
-              </div>
-
-              <div class="coin-face coin-back">
-                <div class="coin-stat-num">60%</div>
-                <div class="coin-stat-label">Average IRS Debt Reduction</div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Canvas chart , revealed after first flip -->
-          <div class="chart-wrap" id="chartWrap">
-            <div class="chart-title">Where Families Lose Money</div>
-            <canvas id="pieChart" width="240" height="240" aria-label="Pie chart showing how families lose money"></canvas>
-            <div class="chart-legend" id="chartLegend"></div>
-          </div>
-
-          <!-- Tooltip element positioned by JS -->
-          <div id="chartTooltip"></div>
-
-        </div><!-- /coin-visual -->
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       ABOUT US
-  ============================================================ -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="about-layout">
-
-        <!-- Left: copy -->
-        <div class="about-text reveal">
-          <div class="section-tag">Our Story</div>
-          <h2 class="section-title">
-            <span class="grad-dark">We Built This Firm for Families Like Yours</span>
-          </h2>
-
-          <p class="about-body">We've sat across from families who were embarrassed, scared, and convinced their situation was beyond repair. It never was. At Fiscus Max, we believe every working family deserves the same quality tax help that Fortune 500 companies get. We were founded by tax professionals who grew up in working-class households , we know exactly what it feels like to open that IRS letter.</p>
-
-          <p class="about-body">We built this firm because we saw too many families left alone to navigate a complicated, unforgiving tax system. Losing money they'd rightfully earned. Facing penalties they didn't know how to fight. That changes the moment you call us.</p>
-
-          <div class="about-values">
-            <div class="value-row">
-              <div class="value-check"></div>
-              <span>We fight for every dollar you're owed</span>
-            </div>
-            <div class="value-row">
-              <div class="value-check"></div>
-              <span>We explain everything in plain language</span>
-            </div>
-            <div class="value-row">
-              <div class="value-check"></div>
-              <span>We're by your side from start to finish</span>
-            </div>
-            <div class="value-row">
-              <div class="value-check"></div>
-              <span>Your consultation is always free</span>
-            </div>
-          </div>
-
-          <a href="#book" class="about-cta">Book a Free Consultation</a>
-        </div><!-- /about-text -->
-
-        <!-- Right: photo placeholder -->
-        <div class="about-photo reveal reveal-d1">
-          <div class="about-stat">
-            <span class="about-stat-number">500+</span>
-            <div class="about-stat-label">Families Served</div>
-          </div>
-          <div class="team-grid">
-            <div class="team-card reveal reveal-d1">
-              <img src="/assets/images/keelyng_headshot_darkwood(1).png" alt="Keelyn Givens" class="team-headshot" />
-              <div class="team-name">Keelyn Givens</div>
-              <div class="team-title">CEO / Co-Founder</div>
-            </div>
-            <div class="team-card reveal reveal-d2">
-              <img src="/assets/images/ChelseaL_Headshot.png" alt="Chelsea Leggett" class="team-headshot" />
-              <div class="team-name">Chelsea Leggett</div>
-              <div class="team-title">People &amp; Insurance Director / Co-Founder</div>
-            </div>
-            <div class="team-card reveal reveal-d3">
-              <img src="/assets/images/grantwallace_headshot.png" alt="Grant Wallace" class="team-headshot" />
-              <div class="team-name">Grant Wallace</div>
-              <div class="team-title">Brand Operations Director</div>
-            </div>
-            <div class="team-card reveal reveal-d4">
-              <img src="/assets/images/EbonyC_Generatedheadshot(1)_3-27-26.png" alt="Ebony Caffey" class="team-headshot" />
-              <div class="team-name">Ebony Caffey</div>
-              <div class="team-title">Fiscus Max Certified Tax Preparer</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
        CAREERS
   ============================================================ -->
   <section id="careers">
@@ -3081,70 +2921,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </style>
 
   <!-- ============================================================
-       CREDENTIALS
-  ============================================================ -->
-  <section id="credentials">
-    <div class="section-inner">
-
-      <div class="credentials-header reveal">
-        <div class="section-tag">Our Credentials</div>
-        <h2 class="section-title">
-          <span class="grad-gold">Qualified, Authorized &amp; Accountable</span>
-        </h2>
-        <p class="credentials-sub">When you trust someone with your taxes and your family's financial future, credentials matter. Here's what we bring to the table.</p>
-      </div>
-
-      <div class="credentials-grid" id="credentialsGrid">
-
-        <div class="cred-card">
-          <hr class="cred-rule">
-          <h3 class="cred-title">IRS Authorized Preparers</h3>
-          <p class="cred-body">Every tax professional at Fiscus Max holds an active PTIN (Preparer Tax Identification Number) issued directly by the IRS. This means we are federally recognized and legally authorized to prepare and file your return.</p>
-        </div>
-
-        <div class="cred-card">
-          <hr class="cred-rule">
-          <h3 class="cred-title">Tax Resolution Specialists</h3>
-          <p class="cred-body">Our resolution team is trained to negotiate directly with the IRS on your behalf, including Offers in Compromise, Installment Agreements, Penalty Abatements, and Currently Not Collectible status.</p>
-        </div>
-
-        <div class="cred-card">
-          <hr class="cred-rule">
-          <h3 class="cred-title">Your Information Is Safe</h3>
-          <p class="cred-body">We take client privacy seriously. All documents are handled through secure, encrypted channels. We never share your information and comply fully with IRS data security standards.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SOCIAL PROOF BAR
-  ============================================================ -->
-  <section id="stats-bar">
-    <div class="stats-bar-inner">
-      <div class="stat-block">
-        <div class="stat-num">$2M+</div>
-        <span class="stat-lbl">Saved for Families</span>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">500+</div>
-        <span class="stat-lbl">Cases Resolved</span>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">98%</div>
-        <span class="stat-lbl">Client Satisfaction</span>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">5 ★</div>
-        <span class="stat-lbl">Average Rating</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ============================================================
        TESTIMONIALS
   ============================================================ -->
   <section id="testimonials">
@@ -3228,65 +3004,274 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ============================================================
-       BOOK A CONSULTATION
+       GOLD COIN INTERACTIVE
   ============================================================ -->
-  <section id="book">
+  <section id="coin">
     <div class="section-inner">
-      <div class="book-layout">
+      <div class="coin-layout">
 
-        <!-- Left: copy + checks + risk pill -->
-        <div class="book-left-reveal">
-          <p class="book-eyebrow-label">Ready When You Are</p>
-          <h2 class="book-headline">
-            <span class="grad-dark">Let's Talk About What's Possible for Your Family</span>
+        <!-- Left: copy + stats -->
+        <div class="coin-text reveal">
+          <div class="section-tag">The Tax Gap</div>
+          <h2 class="section-title">
+            <span class="grad-dark">Millions of Families Leave Money Behind Every Year</span>
           </h2>
-          <p class="book-sub">Your first consultation is completely free. No obligation, no jargon, no pressure. Just an honest conversation about your situation and what we can do together.</p>
+          <p class="section-body">The IRS estimates that working families miss out on thousands of dollars in refunds and credits annually , not because they're dishonest, but because no one ever showed them how to claim what they've earned.</p>
 
-          <div class="book-checks">
+          <div class="coin-facts">
 
-            <div class="book-check">
-              <span class="book-check-mark">✓</span>
-              <div>
-                <strong class="book-check-label">Response within one business day</strong>
-                <span class="book-check-desc">Every request gets a personal reply, not an automated response.</span>
+            <div class="coin-fact">
+              <div class="fact-icon"></div>
+              <div class="fact-content">
+                <strong>$1,200 in Average Missed Deductions</strong>
+                <span>Most families never claim work expenses, education credits, or childcare deductions they fully qualify for.</span>
               </div>
             </div>
 
-            <div class="book-check">
-              <span class="book-check-mark">✓</span>
-              <div>
-                <strong class="book-check-label">48-hour quote turnaround</strong>
-                <span class="book-check-desc">Clear, honest pricing delivered fast so you can make confident decisions.</span>
+            <div class="coin-fact">
+              <div class="fact-icon"></div>
+              <div class="fact-content">
+                <strong>14 Million IRS Notices Sent Annually</strong>
+                <span>Most can be resolved quickly with the right representation , but ignored notices escalate into liens and levies.</span>
               </div>
             </div>
 
-            <div class="book-check">
-              <span class="book-check-mark">✓</span>
-              <div>
-                <strong class="book-check-label">Total transparency</strong>
-                <span class="book-check-desc">You'll always know exactly where your money stands.</span>
+            <div class="coin-fact">
+              <div class="fact-icon"></div>
+              <div class="fact-content">
+                <strong>Average Settlement: 40¢ on the Dollar</strong>
+                <span>With professional negotiation, most tax debts can be settled for significantly less than what's originally owed.</span>
               </div>
             </div>
 
           </div>
+        </div><!-- /coin-text -->
 
-        </div><!-- /book-left -->
+        <!-- Right: 3D coin + canvas chart -->
+        <div class="coin-visual reveal reveal-d1">
 
-        <!-- Right: CTA column -->
-        <div class="book-cta-col book-right-reveal">
-          <img src="/assets/images/footer logo tree.png" alt="Fiscus Max" style="width:80px; opacity:0.85; margin-bottom:24px;">
-          <h3 class="book-cta-headline">
-            <span class="grad-dark">Book Your Free Consultation</span>
-          </h3>
-          <p class="book-cta-sub">Takes less than 2 minutes. We'll be in touch within one business day.</p>
-          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn-book-primary">
-            Start Your Free Consultation
-          </a>
-          <p class="book-contact-info">469-966-9071 &middot; consult@fiscusmax.com &middot; Mon–Sun 9am–9pm</p>
+          <p class="coin-hint" id="coinHint">Hover to flip</p>
+
+          <div class="coin-scene" id="coinScene" role="button" aria-label="Flip coin to reveal statistic" tabindex="0">
+            <div class="coin-3d" id="coin3d">
+
+              <div class="coin-face coin-front">
+                <img
+                  src="/assets/images/coin%20tree%20logo.png"
+                  alt="Fiscus Max"
+                  class="coin-tree-logo"
+                />
+                <div class="coin-label-front">Fiscus Max</div>
+              </div>
+
+              <div class="coin-face coin-back">
+                <div class="coin-stat-num">60%</div>
+                <div class="coin-stat-label">Average IRS Debt Reduction</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Canvas chart , revealed after first flip -->
+          <div class="chart-wrap" id="chartWrap">
+            <div class="chart-title">Where Families Lose Money</div>
+            <canvas id="pieChart" width="240" height="240" aria-label="Pie chart showing how families lose money"></canvas>
+            <div class="chart-legend" id="chartLegend"></div>
+          </div>
+
+          <!-- Tooltip element positioned by JS -->
+          <div id="chartTooltip"></div>
+
+        </div><!-- /coin-visual -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT US
+  ============================================================ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-layout">
+
+        <!-- Left: copy -->
+        <div class="about-text reveal">
+          <div class="section-tag">Our Story</div>
+          <h2 class="section-title">
+            <span class="grad-dark">We Built This Firm for Families Like Yours</span>
+          </h2>
+
+          <p class="about-body">We've sat across from families who were embarrassed, scared, and convinced their situation was beyond repair. It never was. At Fiscus Max, we believe every working family deserves the same quality tax help that Fortune 500 companies get. We were founded by tax professionals who grew up in working-class households , we know exactly what it feels like to open that IRS letter.</p>
+
+          <p class="about-body">We built this firm because we saw too many families left alone to navigate a complicated, unforgiving tax system. Losing money they'd rightfully earned. Facing penalties they didn't know how to fight. That changes the moment you call us.</p>
+
+          <div class="about-values">
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>We fight for every dollar you're owed</span>
+            </div>
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>We explain everything in plain language</span>
+            </div>
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>We're by your side from start to finish</span>
+            </div>
+            <div class="value-row">
+              <div class="value-check"></div>
+              <span>Your consultation is always free</span>
+            </div>
+          </div>
+
+          <a href="#book" class="about-cta">Book a Free Consultation</a>
+        </div><!-- /about-text -->
+
+        <!-- Right: photo placeholder -->
+        <div class="about-photo reveal reveal-d1">
+          <div class="about-stat">
+            <span class="about-stat-number">500+</span>
+            <div class="about-stat-label">Families Served</div>
+          </div>
+          <div class="team-grid">
+            <div class="team-card reveal reveal-d1">
+              <img src="/assets/images/keelyng_headshot_darkwood(1).png" alt="Keelyn Givens" class="team-headshot" />
+              <div class="team-name">Keelyn Givens</div>
+              <div class="team-title">CEO / Co-Founder</div>
+            </div>
+            <div class="team-card reveal reveal-d2">
+              <img src="/assets/images/ChelseaL_Headshot.png" alt="Chelsea Leggett" class="team-headshot" />
+              <div class="team-name">Chelsea Leggett</div>
+              <div class="team-title">People &amp; Insurance Director / Co-Founder</div>
+            </div>
+            <div class="team-card reveal reveal-d3">
+              <img src="/assets/images/grantwallace_headshot.png" alt="Grant Wallace" class="team-headshot" />
+              <div class="team-name">Grant Wallace</div>
+              <div class="team-title">Brand Operations Director</div>
+            </div>
+            <div class="team-card reveal reveal-d4">
+              <img src="/assets/images/EbonyC_Generatedheadshot(1)_3-27-26.png" alt="Ebony Caffey" class="team-headshot" />
+              <div class="team-name">Ebony Caffey</div>
+              <div class="team-title">Fiscus Max Certified Tax Preparer</div>
+            </div>
+          </div>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CREDENTIALS
+  ============================================================ -->
+  <section id="credentials">
+    <div class="section-inner">
+
+      <div class="credentials-header reveal">
+        <div class="section-tag">Our Credentials</div>
+        <h2 class="section-title">
+          <span class="grad-gold">Qualified, Authorized &amp; Accountable</span>
+        </h2>
+        <p class="credentials-sub">When you trust someone with your taxes and your family's financial future, credentials matter. Here's what we bring to the table.</p>
+      </div>
+
+      <div class="credentials-grid" id="credentialsGrid">
+
+        <div class="cred-card">
+          <hr class="cred-rule">
+          <h3 class="cred-title">IRS Authorized Preparers</h3>
+          <p class="cred-body">Every tax professional at Fiscus Max holds an active PTIN (Preparer Tax Identification Number) issued directly by the IRS. This means we are federally recognized and legally authorized to prepare and file your return.</p>
+        </div>
+
+        <div class="cred-card">
+          <hr class="cred-rule">
+          <h3 class="cred-title">Tax Resolution Specialists</h3>
+          <p class="cred-body">Our resolution team is trained to negotiate directly with the IRS on your behalf, including Offers in Compromise, Installment Agreements, Penalty Abatements, and Currently Not Collectible status.</p>
+        </div>
+
+        <div class="cred-card">
+          <hr class="cred-rule">
+          <h3 class="cred-title">Your Information Is Safe</h3>
+          <p class="cred-body">We take client privacy seriously. All documents are handled through secure, encrypted channels. We never share your information and comply fully with IRS data security standards.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SOCIAL PROOF BAR
+  ============================================================ -->
+  <section id="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-block">
+        <div class="stat-num">$2M+</div>
+        <span class="stat-lbl">Saved for Families</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">500+</div>
+        <span class="stat-lbl">Cases Resolved</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">98%</div>
+        <span class="stat-lbl">Client Satisfaction</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">5 ★</div>
+        <span class="stat-lbl">Average Rating</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BLOG / RESOURCES
+  ============================================================ -->
+  <section id="blog">
+    <div class="section-inner">
+
+      <div class="blog-header reveal">
+        <div class="section-tag">Tax Resources</div>
+        <h2 class="section-title">
+          <span class="grad-dark">Knowledge That Puts Money in Your Pocket</span>
+        </h2>
+      </div>
+
+      <div class="blog-grid">
+
+        <article class="blog-card reveal reveal-d1">
+          <img src="assets/images/blog_image_1.png" alt="Tax tips for working families" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
+          <div class="blog-content">
+            <span class="blog-tag">Tax Tips</span>
+            <h3 class="blog-title">5 Tax Deductions Working Families Miss Every Year</h3>
+            <p class="blog-excerpt">From childcare credits to home office deductions, these commonly overlooked write-offs could put hundreds , even thousands , back in your pocket this season.</p>
+            <button class="blog-link" onclick="openBlogModal(0)">Read article <span class="blog-arrow">→</span></button>
+          </div>
+        </article>
+
+        <article class="blog-card reveal reveal-d2">
+          <img src="assets/images/blog_image_2.png" alt="IRS tax resolution help" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
+          <div class="blog-content">
+            <span class="blog-tag">IRS Help</span>
+            <h3 class="blog-title">What to Do When You Receive an IRS Letter</h3>
+            <p class="blog-excerpt">Don't panic. Most IRS letters aren't as serious as they look , but ignoring them is always a mistake. Here's exactly what to do in the first 48 hours.</p>
+            <button class="blog-link" onclick="openBlogModal(1)">Read article <span class="blog-arrow">→</span></button>
+          </div>
+        </article>
+
+        <article class="blog-card reveal reveal-d3">
+          <img src="assets/images/blog_image_3.png" alt="Family tax planning" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
+          <div class="blog-content">
+            <span class="blog-tag">Resolution</span>
+            <h3 class="blog-title">IRS Payment Plans Explained: What You Need to Know</h3>
+            <p class="blog-excerpt">Can't pay your tax bill in full? The IRS offers several payment options. We break down each one so you can find the right path forward for your family.</p>
+            <button class="blog-link" onclick="openBlogModal(2)">Read article <span class="blog-arrow">→</span></button>
+          </div>
+        </article>
 
       </div>
     </div>
@@ -3765,49 +3750,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ============================================================
-       BLOG / RESOURCES
+       BOOK A CONSULTATION
   ============================================================ -->
-  <section id="blog">
+  <section id="book">
     <div class="section-inner">
+      <div class="book-layout">
 
-      <div class="blog-header reveal">
-        <div class="section-tag">Tax Resources</div>
-        <h2 class="section-title">
-          <span class="grad-dark">Knowledge That Puts Money in Your Pocket</span>
-        </h2>
-      </div>
+        <!-- Left: copy + checks + risk pill -->
+        <div class="book-left-reveal">
+          <p class="book-eyebrow-label">Ready When You Are</p>
+          <h2 class="book-headline">
+            <span class="grad-dark">Let's Talk About What's Possible for Your Family</span>
+          </h2>
+          <p class="book-sub">Your first consultation is completely free. No obligation, no jargon, no pressure. Just an honest conversation about your situation and what we can do together.</p>
 
-      <div class="blog-grid">
+          <div class="book-checks">
 
-        <article class="blog-card reveal reveal-d1">
-          <img src="assets/images/blog_image_1.png" alt="Tax tips for working families" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
-          <div class="blog-content">
-            <span class="blog-tag">Tax Tips</span>
-            <h3 class="blog-title">5 Tax Deductions Working Families Miss Every Year</h3>
-            <p class="blog-excerpt">From childcare credits to home office deductions, these commonly overlooked write-offs could put hundreds , even thousands , back in your pocket this season.</p>
-            <button class="blog-link" onclick="openBlogModal(0)">Read article <span class="blog-arrow">→</span></button>
+            <div class="book-check">
+              <span class="book-check-mark">✓</span>
+              <div>
+                <strong class="book-check-label">Response within one business day</strong>
+                <span class="book-check-desc">Every request gets a personal reply, not an automated response.</span>
+              </div>
+            </div>
+
+            <div class="book-check">
+              <span class="book-check-mark">✓</span>
+              <div>
+                <strong class="book-check-label">48-hour quote turnaround</strong>
+                <span class="book-check-desc">Clear, honest pricing delivered fast so you can make confident decisions.</span>
+              </div>
+            </div>
+
+            <div class="book-check">
+              <span class="book-check-mark">✓</span>
+              <div>
+                <strong class="book-check-label">Total transparency</strong>
+                <span class="book-check-desc">You'll always know exactly where your money stands.</span>
+              </div>
+            </div>
+
           </div>
-        </article>
 
-        <article class="blog-card reveal reveal-d2">
-          <img src="assets/images/blog_image_2.png" alt="IRS tax resolution help" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
-          <div class="blog-content">
-            <span class="blog-tag">IRS Help</span>
-            <h3 class="blog-title">What to Do When You Receive an IRS Letter</h3>
-            <p class="blog-excerpt">Don't panic. Most IRS letters aren't as serious as they look , but ignoring them is always a mistake. Here's exactly what to do in the first 48 hours.</p>
-            <button class="blog-link" onclick="openBlogModal(1)">Read article <span class="blog-arrow">→</span></button>
-          </div>
-        </article>
+        </div><!-- /book-left -->
 
-        <article class="blog-card reveal reveal-d3">
-          <img src="assets/images/blog_image_3.png" alt="Family tax planning" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;">
-          <div class="blog-content">
-            <span class="blog-tag">Resolution</span>
-            <h3 class="blog-title">IRS Payment Plans Explained: What You Need to Know</h3>
-            <p class="blog-excerpt">Can't pay your tax bill in full? The IRS offers several payment options. We break down each one so you can find the right path forward for your family.</p>
-            <button class="blog-link" onclick="openBlogModal(2)">Read article <span class="blog-arrow">→</span></button>
-          </div>
-        </article>
+        <!-- Right: CTA column -->
+        <div class="book-cta-col book-right-reveal">
+          <img src="/assets/images/footer logo tree.png" alt="Fiscus Max" style="width:80px; opacity:0.85; margin-bottom:24px;">
+          <h3 class="book-cta-headline">
+            <span class="grad-dark">Book Your Free Consultation</span>
+          </h3>
+          <p class="book-cta-sub">Takes less than 2 minutes. We'll be in touch within one business day.</p>
+          <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-book-primary">
+            Start Your Free Consultation
+          </a>
+          <p class="book-contact-info">469-966-9071 &middot; consult@fiscusmax.com &middot; Mon–Sun 9am–9pm</p>
+        </div>
 
       </div>
     </div>

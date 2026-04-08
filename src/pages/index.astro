@@ -2052,11 +2052,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <script>
     // ============================================================
-    // RE-OBSERVE new .reveal elements added in chunk 2
-    // ============================================================
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ============================================================
     // GOLD COIN , flip on hover (CSS) + click/tap (JS)
     // ============================================================
     const coinScene  = document.getElementById('coinScene');

@@ -4392,7 +4392,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // ── Job modal (unchanged) ──
     let _jobScrollPosition = 0;
 
-    function openModal(id) {
+    window.openModal = function(id) {
       const overlay = document.getElementById(id);
       overlay.classList.add('modal-open');
       overlay.setAttribute('aria-hidden', 'false');
@@ -4403,7 +4403,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       document.body.style.top = '-' + _jobScrollPosition + 'px';
     }
 
-    function closeModal(id) {
+    window.closeModal = function(id) {
       const overlay = document.getElementById(id);
       overlay.classList.remove('modal-open');
       overlay.setAttribute('aria-hidden', 'true');
@@ -4414,12 +4414,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       window.scrollTo(0, _jobScrollPosition);
     }
 
-    function openJobModal(jobId) {
+    window.openJobModal = function(jobId) {
       const job = JOB_DATA[jobId];
       document.getElementById('jobModalBadge').textContent = job.badge;
       document.getElementById('jobModalTitle').textContent = job.title;
       document.getElementById('jobModalList').innerHTML = job.items.map(item => `<li>${item}</li>`).join('');
-      openModal('jobModal');
+      window.openModal('jobModal');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -4438,7 +4438,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       'assets/images/blog_image_3.png'
     ];
 
-    function openBlogModal(idx) {
+    window.openBlogModal = function openBlogModal(idx) {
       const post = BLOG_DATA[idx];
       document.getElementById('blogModalEmoji').textContent = post.emoji;
       document.getElementById('blogModalTag').textContent = post.tag;

@@ -3334,10 +3334,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const faqContainer = document.getElementById('faqContainer');
     if (faqContainer) faqObserver.observe(faqContainer);
 
-    // ============================================================
-    // RE-OBSERVE new .reveal elements added in chunk 3
-    // ============================================================
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 
 
@@ -3747,10 +3743,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
 
-  <script>
-    // Re-observe any new .reveal elements added in chunk 4
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  </script>
 
 
   <!-- ============================================================
@@ -4198,13 +4190,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <script>
 
     // ============================================================
-    // FINAL REVEAL PASS , catches any elements not yet observed
-    // ============================================================
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-
-    // ============================================================
-
 
 
     // ============================================================

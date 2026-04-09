@@ -1637,17 +1637,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       pointer-events: auto;
     }
 
-    #blogModal {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    #blogModal.modal-visible {
-      display: flex;
-      opacity: 1;
-    }
-
     .modal-card {
       background: #f8f4e5;
       border-radius: 16px;
@@ -1754,73 +1743,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .modal-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(214, 182, 97, 0.4);
-    }
-
-    /* Blog modal */
-    .modal-img {
-      width: 100%;
-      height: 160px;
-      background: linear-gradient(135deg, #114b1c 0%, #1a6b2e 100%);
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-img-emoji {
-      font-size: 52px;
-      opacity: 0.55;
-    }
-
-    .modal-tag {
-      font-family: 'Funnel Display', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--gold-dk);
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .modal-body {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin: 16px 0 28px;
-    }
-
-    .modal-body p {
-      font-family: 'Funnel Display', sans-serif;
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.82;
-      color: #4a4a4a;
-    }
-
-    .modal-share {
-      font-family: 'Funnel Display', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--green);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-bottom: 1px solid rgba(6, 66, 18, 0.2);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .modal-share:hover { color: var(--gold-dk); border-color: var(--gold-dk); }
-
-    /* Blog link as button reset */
-    button.blog-link {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
     }
 
     @media (max-width: 760px) {
@@ -3225,7 +3147,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="blog-tag">Tax Tips</span>
             <h3 class="blog-title">5 Tax Deductions Working Families Miss Every Year</h3>
             <p class="blog-excerpt">From childcare credits to home office deductions, these commonly overlooked write-offs could put hundreds , even thousands , back in your pocket this season.</p>
-            <button class="blog-link" onclick="openBlogModal(0)">Read article <span class="blog-arrow">→</span></button>
+            <a href="/resources/blog/tax-deductions-working-families" class="blog-link">Read article <span class="blog-arrow">→</span></a>
           </div>
         </article>
 
@@ -3235,7 +3157,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="blog-tag">IRS Help</span>
             <h3 class="blog-title">What to Do When You Receive an IRS Letter</h3>
             <p class="blog-excerpt">Don't panic. Most IRS letters aren't as serious as they look , but ignoring them is always a mistake. Here's exactly what to do in the first 48 hours.</p>
-            <button class="blog-link" onclick="openBlogModal(1)">Read article <span class="blog-arrow">→</span></button>
+            <a href="/resources/blog/irs-notice-what-to-do" class="blog-link">Read article <span class="blog-arrow">→</span></a>
           </div>
         </article>
 
@@ -3245,7 +3167,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="blog-tag">Resolution</span>
             <h3 class="blog-title">IRS Payment Plans Explained: What You Need to Know</h3>
             <p class="blog-excerpt">Can't pay your tax bill in full? The IRS offers several payment options. We break down each one so you can find the right path forward for your family.</p>
-            <button class="blog-link" onclick="openBlogModal(2)">Read article <span class="blog-arrow">→</span></button>
+            <a href="/resources/blog/year-round-tax-planning" class="blog-link">Read article <span class="blog-arrow">→</span></a>
           </div>
         </article>
 
@@ -4353,43 +4275,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     };
 
-    const BLOG_DATA = [
-      {
-        title: '5 Tax Deductions Working Families Miss Every Year',
-        tag: 'Tax Tips',
-        emoji: '📝',
-        body: [
-          'Every year, millions of working families leave money on the table simply because they don\'t know what they\'re entitled to claim. The tax code is vast, and without expert guidance, it\'s easy to overlook credits and deductions that could put hundreds or even thousands of dollars back in your pocket.',
-          'The Child and Dependent Care Credit alone can offset thousands of dollars in childcare expenses, yet many families fail to claim it. Similarly, the Earned Income Tax Credit is one of the most valuable credits available, but it\'s also one of the most frequently missed, particularly by self-employed parents.',
-          'Home office deductions, student loan interest, educator expenses, and health savings account contributions are all commonly overlooked. If you work from home even part of the time, you may qualify for deductions that significantly reduce your taxable income.',
-          'The best way to make sure you\'re claiming everything you\'re owed is to work with a tax professional who knows your situation. At Fiscus Max, we review every return for missed opportunities, and we guarantee accuracy.'
-        ]
-      },
-      {
-        title: 'What to Do When You Receive an IRS Letter',
-        tag: 'IRS Help',
-        emoji: '',
-        body: [
-          'Receiving a letter from the IRS can be alarming, but most IRS correspondence is not as serious as it first appears. The key is to respond promptly and accurately. Ignoring an IRS letter almost always makes the situation worse.',
-          'The first step is to read the letter carefully. Most IRS notices are about specific issues: a correction to your return, a balance due, a request for additional information, or a notice of audit. The letter will include a notice number that tells you exactly what the issue is.',
-          'Do not call the number on the letter immediately. Instead, verify the notice number on the IRS website or consult a tax professional. Scam letters that mimic IRS correspondence are common, and it\'s important to confirm authenticity before taking action.',
-          'If the letter is legitimate and you owe money, you have options including installment agreements, offers in compromise, and penalty abatements. At Fiscus Max, we handle IRS correspondence on your behalf so you never have to face them alone.'
-        ]
-      },
-      {
-        title: 'IRS Payment Plans Explained: What You Need to Know',
-        tag: 'Resolution',
-        emoji: '🗓️',
-        body: [
-          'If you owe taxes you can\'t pay in full, you\'re not alone, and you have more options than you might think. The IRS offers several payment arrangements designed to help taxpayers get into compliance without financial hardship.',
-          'The most common option is an Installment Agreement, which lets you pay your balance over time in monthly payments. Short-term agreements can be set up for balances under $100,000. Long-term agreements are available for larger amounts and longer repayment periods.',
-          'For taxpayers in significant financial hardship, the Offer in Compromise program may allow you to settle your tax debt for less than the full amount owed. The IRS evaluates your ability to pay, income, expenses, and asset equity before accepting or rejecting an offer.',
-          'Currently Not Collectible status is another option. If the IRS determines you cannot pay your basic living expenses and still make payments, they may temporarily halt collection activity. At Fiscus Max, we evaluate every option to find the best resolution path for your situation.'
-        ]
-      }
-    ];
-
-    // ── Job modal (unchanged) ──
+    // ── Job modal ──
     let _jobScrollPosition = 0;
 
     window.openModal = function(id) {
@@ -4431,99 +4317,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     });
 
-    // ── Blog modal — clean implementation ──
-    const BLOG_IMAGES = [
-      'assets/images/blog_image_1.png',
-      'assets/images/blog_image_2.png',
-      'assets/images/blog_image_3.png'
-    ];
-
-    window.openBlogModal = function openBlogModal(idx) {
-      const post = BLOG_DATA[idx];
-      document.getElementById('blogModalEmoji').textContent = post.emoji;
-      document.getElementById('blogModalTag').textContent = post.tag;
-      document.getElementById('blogModalTitle').textContent = post.title;
-      document.getElementById('blogModalBody').innerHTML = post.body.map(p => `<p>${p}</p>`).join('');
-      const modalImg = document.getElementById('blogModalImg');
-      if (modalImg && BLOG_IMAGES[idx]) {
-        modalImg.src = BLOG_IMAGES[idx];
-        modalImg.alt = post.title;
-        modalImg.style.display = 'block';
-      }
-      // Delegate to IIFE blog open
-      if (window._openBlogModal) window._openBlogModal();
-    }
-
-    (function() {
-      let savedScroll = 0;
-
-      function openBlogModalEl(modal) {
-        savedScroll = window.pageYOffset;
-        modal.style.display = 'flex';
-        setTimeout(() => modal.classList.add('modal-visible'), 10);
-        document.body.style.top = '-' + savedScroll + 'px';
-        document.body.classList.add('modal-open');
-      }
-
-      function closeBlogModalEl(modal) {
-        modal.classList.remove('modal-visible');
-        setTimeout(() => {
-          modal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-          document.body.style.top = '';
-          window.scrollTo({ top: savedScroll, behavior: 'instant' });
-        }, 300);
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('blogModal');
-        if (!modal) return;
-
-        // Expose open function for inline onclick handlers
-        window._openBlogModal = () => openBlogModalEl(modal);
-
-        // Close on X button
-        modal.querySelectorAll('.modal-close, .blog-modal-close')
-          .forEach(btn => {
-            btn.addEventListener('click', (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              closeBlogModalEl(modal);
-            });
-          });
-
-        // Close on overlay click
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeBlogModalEl(modal);
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && modal.classList.contains('modal-visible')) {
-            closeBlogModalEl(modal);
-          }
-        });
-
-        // Share button
-        modal.querySelectorAll('[class*="share"]').forEach(btn => {
-          btn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            try {
-              if (navigator.share) {
-                await navigator.share({ title: 'Fiscus Max Tax Tips', url: window.location.href });
-              } else {
-                await navigator.clipboard.writeText(window.location.href);
-                const orig = btn.textContent;
-                btn.textContent = '✓ Link Copied!';
-                setTimeout(() => btn.textContent = orig, 2000);
-              }
-            } catch(err) { /* dismissed */ }
-          });
-        });
-      });
-    })();
-
     // ============================================================
     // SVG SCENE , graph draw-in + family reveal
     // ============================================================
@@ -4564,24 +4357,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="modal-title" id="jobModalTitle"></h2>
       <ul class="modal-list" id="jobModalList"></ul>
       <a href="mailto:office@fiscusmax.com" class="modal-cta">Send Your Resume</a>
-    </div>
-  </div>
-
-  <!-- ============================================================
-       BLOG MODAL
-  ============================================================ -->
-
-  <div id="blogModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
-    <div class="modal-card">
-      <button class="modal-close" onclick="window.closeModal('blogModal')" aria-label="Close">&times;</button>
-      <div class="modal-img">
-        <img id="blogModalImg" class="blog-modal-img" src="" alt="" style="width:100%; height:200px; object-fit:cover; border-radius:8px; display:none; margin-bottom:8px;">
-        <span class="modal-img-emoji" id="blogModalEmoji"></span>
-      </div>
-      <span class="modal-tag" id="blogModalTag"></span>
-      <h2 class="modal-title" id="blogModalTitle"></h2>
-      <div class="modal-body" id="blogModalBody"></div>
-      <a href="#" class="modal-share">Share This Article ↗</a>
     </div>
   </div>
 

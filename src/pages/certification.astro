@@ -1,0 +1,1401 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Fiscus Max Virtual Tax Preparer Certification — 2026 Cohorts Now Open";
+const description = "Join the Fiscus Max Virtual Tax Preparer Certification. Three cohorts starting August, September, and October 2026. Limited seats. Enrollment closes soon.";
+const canonical = "https://fiscusmax.com/certification";
+const keywords = "virtual tax preparer certification, tax preparer training 2026, remote tax preparer certification, become a tax preparer, Fiscus Max certification program";
+
+const ENROLL_URL = "https://buy.stripe.com/28E28tfsxg3l3KQ5gH7EQ01";
+
+const trustItems = [
+  '100% Remote',
+  'Flexible Schedule',
+  'Real-World Case Studies',
+  'IRS Compliance Training',
+  'Client Centered Strategies',
+];
+
+const weeks = [
+  {
+    week: 1,
+    modules: [
+      {
+        num: '01',
+        title: 'Individual Tax Return Preparation',
+        body: 'Core Form 1040 preparation — filing status, dependency rules, income classification, and the common schedules working families actually need. Live case study included.',
+      },
+      {
+        num: '02',
+        title: 'Deduction and Credit Optimization',
+        body: 'Earned Income Tax Credit, Child Tax Credit, education credits. Live walkthrough of real return scenarios showing how these credits apply and where preparers commonly miss them.',
+      },
+    ],
+  },
+  {
+    week: 2,
+    modules: [
+      {
+        num: '03',
+        title: 'Small Business and Self-Employment Tax',
+        body: 'Schedule C preparation, self-employment tax, quarterly estimated payments, and the deductions self-employed clients consistently miss. Includes a live small business filing simulation.',
+      },
+      {
+        num: '04',
+        title: 'Tax Resolution Fundamentals',
+        body: 'Recognize when a client needs resolution support. Live discussion of real IRS notice types, escalation protocols, and how to communicate confidently about balances due.',
+      },
+    ],
+  },
+  {
+    week: 3,
+    modules: [
+      {
+        num: '05',
+        title: 'Client Intake and Data Security',
+        body: 'Documentation standards and secure file handling in a remote environment. Live walkthrough of the Fiscus Max intake process from first contact to completed file.',
+      },
+      {
+        num: '06',
+        title: 'Virtual Client Communication',
+        body: 'Live role-play scenarios covering how to set expectations, explain outcomes clearly, and manage difficult conversations with professionalism. This is where good preparers become great ones.',
+      },
+    ],
+  },
+  {
+    week: 4,
+    modules: [
+      {
+        num: '07',
+        title: 'Federal Tax Law Fundamentals',
+        body: 'Filing deadlines, penalty structures, amended returns, and the regulatory framework every preparer needs to operate confidently. Live Q&A with a credentialed instructor.',
+      },
+      {
+        num: '08',
+        title: 'IRS E-File and Preparer Compliance',
+        body: 'E-file procedures, PTIN requirements, due diligence standards, and preparer compliance obligations. Live review of common compliance errors and how to avoid them.',
+      },
+    ],
+  },
+  {
+    week: 5,
+    modules: [
+      {
+        num: '09',
+        title: 'Fiscus Max Tools and Workflows',
+        body: 'Live onboarding into internal systems, client file management, and the firm-wide standards that define how Fiscus Max delivers for every client. Your operational foundation before tax season begins.',
+      },
+      {
+        num: '10',
+        title: 'Ethics and Professional Responsibility + Final Assessment',
+        body: 'Circular 230 compliance and IRS preparer guidelines — the ethical foundation the rest of this work depends on. Followed immediately by the final competency assessment. Participants who pass receive Fiscus Max Virtual Tax Preparer Professional Certification status.',
+      },
+    ],
+  },
+];
+
+const paths = [
+  {
+    title: 'Experienced Tax Preparers',
+    body: 'You have prepared returns before. You are ready to join a remote-first network with higher standards and a mission you can stand behind.',
+  },
+  {
+    title: 'Bookkeepers and Accounting Professionals',
+    body: 'Your financial foundation is an advantage here. This program bridges the gap between what you know and what tax preparation requires.',
+  },
+  {
+    title: 'Career Changers',
+    body: 'You have a background in finance, customer service, or a related field. Prior tax experience is helpful. What matters more is that you are serious about doing this right.',
+  },
+  {
+    title: 'Fiscus Max Team Members',
+    body: 'Advancing into a preparer role. This program builds on what you already know about how we work and who we serve.',
+  },
+];
+
+const cohorts = [
+  {
+    letter: 'A',
+    date: 'August 3, 2026',
+    tagline: 'First cohort. First to complete.',
+    window: 'Aug 3 – Sep 4, 2026',
+    cutoff: 'Enrollment closes July 27',
+    finish: 'Complete by ~Sep 4, 2026',
+    status: 'Enrolling Now',
+    statusClass: 'cert-badge--green',
+    btnClass: 'btn-primary',
+  },
+  {
+    letter: 'B',
+    date: 'August 18, 2026',
+    tagline: 'More prep time before you start.',
+    window: 'Aug 18 – Sep 19, 2026',
+    cutoff: 'Enrollment closes August 11',
+    finish: 'Complete by ~Sep 19, 2026',
+    status: 'Enrolling Now',
+    statusClass: 'cert-badge--green',
+    btnClass: 'btn-primary',
+  },
+  {
+    letter: 'C',
+    date: 'September 2, 2026',
+    tagline: 'Final cohort before filing season.',
+    window: 'Sep 2 – Oct 4, 2026',
+    cutoff: 'Enrollment closes August 26',
+    finish: 'Complete by ~Oct 4, 2026',
+    status: 'Limited Seats',
+    statusClass: 'cert-badge--gold',
+    btnClass: 'btn-secondary',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Do I need prior tax experience?',
+    a: 'Prior experience helps but is not required. The program builds from foundational concepts through applied practice. If you have a background in finance, bookkeeping, or customer service, you are well-positioned.',
+  },
+  {
+    q: 'How long does the program take?',
+    a: 'Most participants complete all modules and the final assessment within four to six weeks on a flexible schedule. The program is designed to work around other commitments.',
+  },
+  {
+    q: 'What happens after I complete the certification?',
+    a: 'Certified preparers qualify for placement in the Fiscus Max network for the upcoming tax season. Our onboarding team will connect with you to discuss next steps, regional availability, and compensation structure.',
+  },
+  {
+    q: 'Is this fully remote?',
+    a: 'Yes. All coursework, assessments, and client work within the Fiscus Max network are conducted entirely online.',
+  },
+  {
+    q: 'How is payment processed?',
+    a: 'Enrollment fees are processed securely through Stripe. You receive immediate access to program materials upon payment confirmation.',
+  },
+  {
+    q: 'What if I do not pass the final assessment?',
+    a: 'Participants who do not pass on the first attempt may retake it after a structured review period. Our goal is for every enrolled participant to complete the program.',
+  },
+  {
+    q: 'Is a PTIN required?',
+    a: 'Participants who do not yet hold a PTIN are guided through registration as part of the IRS compliance module. A PTIN is required for active placement in the Fiscus Max network.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <head>
+    <link rel="canonical" href={canonical} />
+    <meta name="keywords" content={keywords} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+  </head>
+
+  <main class="cert-page">
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+    ============================================================ -->
+    <section class="cert-hero reveal">
+      <div class="cert-hero-inner">
+        <h1 class="cert-headline">
+          <span class="grad-gold">2026 Enrollment Now Open</span>
+        </h1>
+        <p class="cert-sub">
+          There Are Plenty of Tax Training Programs. Most Teach You How to Fill Out Forms. This
+          one teaches you how to change someone's financial life.
+        </p>
+
+        <div class="cert-pills">
+          <span class="cert-pill">Cohort A: Closes July 27</span>
+          <span class="cert-pill">Cohort B: Closes August 11</span>
+          <span class="cert-pill">Cohort C: Closes August 26</span>
+        </div>
+
+        <div class="cert-hero-ctas">
+          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve Your Seat Before Enrollment Closes</a>
+        </div>
+
+        <p class="cert-urgency">We limit every cohort deliberately. Smaller groups mean better support.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 2 — TRUST BAND
+    ============================================================ -->
+    <section class="cert-trust">
+      <div class="cert-trust-inner">
+        {trustItems.map((item, i) => (
+          <>
+            <span class="cert-trust-item">{item}</span>
+            {i < trustItems.length - 1 && <span class="cert-trust-dot" aria-hidden="true">&bull;</span>}
+          </>
+        ))}
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 3 — MISSION & VISION
+    ============================================================ -->
+    <section class="cert-mission">
+      <div class="cert-mission-inner">
+        <div class="cert-mission-cols">
+          <div class="cert-mission-col reveal">
+            <p class="cert-label cert-label--gold">Our Mission</p>
+            <h2 class="cert-mission-title">
+              <span class="grad-dark">Train. Equip. Elevate.</span>
+            </h2>
+            <p class="cert-mission-body">
+              We train tax professionals to deliver more than a return. Through advanced tax
+              strategy, wealth-building education, and the tools of agent entrepreneurship,
+              Fiscus Max preparers are equipped to transform the financial trajectory of every
+              client they serve — not just during tax season, but for years beyond it.
+            </p>
+          </div>
+
+          <div class="cert-mission-divider" aria-hidden="true"></div>
+
+          <div class="cert-mission-col reveal reveal-d2">
+            <p class="cert-label cert-label--gold">Our Vision</p>
+            <h2 class="cert-mission-title">
+              <span class="grad-dark">One Million Homes.</span>
+            </h2>
+            <p class="cert-mission-body">
+              We are building toward a future where one million working families and business
+              owners have access to the financial education they need to build something
+              lasting. Every preparer we certify is one step closer to that number. The work you
+              do inside this program ripples further than any single return.
+            </p>
+          </div>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80"
+          alt="Tax professionals collaborating remotely"
+          class="cert-mission-image reveal"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 4 — WHAT THIS PROGRAM IS
+    ============================================================ -->
+    <section class="cert-about">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--green">The Program</p>
+          <h2 class="cert-section-title">
+            <span class="grad-dark">A Professional Certification. Taught by the People Who Do This Work.</span>
+          </h2>
+        </div>
+
+        <div class="cert-about-grid">
+          <img
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+            alt="Tax professional reviewing documents at desk"
+            class="cert-about-image reveal"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <div class="cert-about-body reveal reveal-d2">
+            <p>
+              Most training programs hand you information and consider their job done. This one
+              invests in your growth.
+            </p>
+            <p>
+              The Fiscus Max certification was built from the ground up around the real skills
+              professional preparers develop over years in the field. Every module is designed to
+              close the gap between where you are and where the work requires you to be. When you
+              complete it, you will not just have a credential. You will have the competency, the
+              confidence, and the client communication skills to walk into tax season ready.
+            </p>
+            <p>
+              Three cohorts are available for the 2026 season. Each one is intentionally small to
+              give every participant the support they need to grow through the program.
+              Enrollment closes before each start date.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 5 — CURRICULUM
+    ============================================================ -->
+    <section id="curriculum" class="cert-curriculum">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--green">Curriculum</p>
+          <h2 class="cert-section-title">
+            <span class="grad-dark">Five Weeks. Ten Live Modules. One Certification.</span>
+          </h2>
+          <p class="cert-header-sub">
+            Every module is delivered as a live virtual class led by trained tax professionals.
+            You will work through real case studies, ask questions in real time, and complete
+            knowledge checks before moving forward. This is not self-paced video content. This is
+            structured, instructor-led training built around your development as a professional.
+          </p>
+        </div>
+
+        <div class="cert-weeks">
+          {weeks.map((w, wi) => (
+            <div class={`cert-week reveal reveal-d${(wi % 3) + 1}`}>
+              <h3 class="cert-week-title grad-gold">Week {w.week}</h3>
+              <div class="cert-week-modules">
+                {w.modules.map(mod => (
+                  <div class="cert-module-card">
+                    <span class="cert-live-badge">Live Class</span>
+                    <div class="cert-module-num">Module {mod.num}</div>
+                    <h4 class="cert-module-title">{mod.title}</h4>
+                    <p class="cert-module-body">{mod.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="cert-curriculum-note">
+          Live class schedules are distributed to enrolled participants following enrollment
+          confirmation. All sessions are recorded for enrolled participants who need to review
+          material.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 6 — PROGRAM FORMAT
+    ============================================================ -->
+    <section class="cert-format">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--gold">How It Works</p>
+          <h2 class="cert-section-title">
+            <span class="grad-gold">Three Steps. One Season-Ready Certification.</span>
+          </h2>
+        </div>
+
+        <div class="cert-step-grid">
+          <div class="cert-step-card reveal reveal-d1">
+            <div class="cert-step-num grad-gold">1</div>
+            <h3 class="cert-step-title">Complete Your Modules</h3>
+            <p class="cert-step-body">
+              Ten modules. Your schedule. Each one includes instruction, real-world case studies,
+              and knowledge checks that prepare you for what comes next.
+            </p>
+          </div>
+          <div class="cert-step-card reveal reveal-d2">
+            <div class="cert-step-num grad-gold">2</div>
+            <h3 class="cert-step-title">Pass the Final Assessment</h3>
+            <p class="cert-step-body">
+              A comprehensive assessment covering all program material. Knowledge checks
+              throughout each module mean you are not walking in cold.
+            </p>
+          </div>
+          <div class="cert-step-card reveal reveal-d3">
+            <div class="cert-step-num grad-gold">3</div>
+            <h3 class="cert-step-title">Join the Network</h3>
+            <p class="cert-step-body">
+              Certified preparers qualify for placement in the Fiscus Max preparer network for the
+              upcoming tax season. You will have the training, the tools, and the support to
+              contribute from day one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 7 — WHO THIS IS FOR
+    ============================================================ -->
+    <section class="cert-who">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--green">Is This for You?</p>
+          <h2 class="cert-section-title">
+            <span class="grad-dark">Four Types of Preparers We Train.</span>
+          </h2>
+        </div>
+
+        <div class="cert-who-grid">
+          {paths.map((path, i) => (
+            <div class={`cert-who-card reveal reveal-d${(i % 2) + 1}`}>
+              <h3 class="cert-who-title">{path.title}</h3>
+              <p class="cert-who-body">{path.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 8 — COHORT DATES
+    ============================================================ -->
+    <section id="cohorts" class="cert-cohorts">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--gold">2026 Cohorts</p>
+          <h2 class="cert-section-title">
+            <span class="grad-gold">Three Windows. Choose Yours Before It Closes.</span>
+          </h2>
+          <p class="cert-header-sub cert-header-sub--light">
+            All three cohorts cover the same curriculum and lead to the same certification. The
+            only difference is when you start — and how much time you have left to enroll.
+          </p>
+        </div>
+
+        <div class="cert-cohort-grid">
+          {cohorts.map((c, i) => (
+            <div class={`cert-cohort-card reveal reveal-d${i + 1}`}>
+              <p class="cert-cohort-label">Cohort {c.letter}</p>
+              <p class="cert-cohort-date grad-gold">{c.date}</p>
+              <p class="cert-cohort-tagline">{c.tagline}</p>
+              <p class="cert-cohort-window">{c.window}</p>
+              <span class="cert-cutoff-pill">{c.cutoff}</span>
+              <p class="cert-cohort-finish">{c.finish}</p>
+              <span class={`cert-badge ${c.statusClass}`}>{c.status}</span>
+              <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class={`${c.btnClass} cert-cohort-btn`}>Enroll in Cohort {c.letter}</a>
+            </div>
+          ))}
+        </div>
+
+        <div class="cert-policy-box">
+          <p class="cert-policy-title">Enrollment &amp; Payment Policy</p>
+          <p class="cert-policy-body">
+            Payment must be completed before your cohort's enrollment cutoff to secure your seat.
+            Completing payment by July 27 places you in Cohort A. By August 11 places you in
+            Cohort B. By August 26 places you in Cohort C. Seats are limited. When a cohort
+            reaches capacity, remaining applicants move to the next available cohort or a
+            waitlist. Enrollment fees are non-refundable once course access has been granted.
+          </p>
+        </div>
+
+        <div class="cert-fee-box">
+          <p class="cert-fee-title">Enrollment &amp; Investment</p>
+          <p class="cert-fee-body">
+            Certification enrollment is $500, due at registration — or spread across weekly
+            Sunday installments through a payment plan. This investment covers your training,
+            materials, and certification credential.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 9 — WHY CERTIFY WITH FISCUS MAX
+    ============================================================ -->
+    <section class="cert-why">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--gold">Why Fiscus Max</p>
+          <h2 class="cert-section-title">
+            <span class="grad-gold">The Work Requires More Than Technical Accuracy.</span>
+          </h2>
+        </div>
+
+        <div class="cert-why-grid">
+          <div class="cert-why-body reveal">
+            <p>
+              Fiscus Max preparers work with families who are often navigating the tax system for
+              the first time, managing IRS notices they do not understand, or trying to turn a
+              refund into something that actually lasts.
+            </p>
+            <p>
+              That work requires more than knowing how to fill out a form. It requires someone
+              who shows up prepared, communicates clearly, and genuinely cares about the outcome.
+              That is the standard we hold. Every module in this program is built around it.
+            </p>
+            <p>
+              The families we serve deserve 1:1 time, effort, and the determination of someone
+              who will fight for their financial future like it is their own. When you complete
+              this certification, you are joining a network that holds that standard every single
+              day.
+            </p>
+          </div>
+
+          <img
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80"
+            alt="Professional woman working with a client"
+            class="cert-why-image reveal reveal-d2"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="cert-value-pills">
+          <span class="cert-pill">Mission-Driven Network</span>
+          <span class="cert-pill">Remote-First Operations</span>
+          <span class="cert-pill">Client-Centered Standards</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 10 — FAQ
+    ============================================================ -->
+    <section class="cert-faq">
+      <div class="cert-section-inner">
+        <div class="cert-header reveal">
+          <p class="cert-label cert-label--green">Common Questions</p>
+          <h2 class="cert-section-title">
+            <span class="grad-dark">What You Need to Know Before You Enroll.</span>
+          </h2>
+        </div>
+
+        <div class="cert-faq-list" id="certFaqList">
+          {faqs.map(item => (
+            <div class="cert-faq-item reveal">
+              <button class="cert-faq-q" aria-expanded="false">
+                <span>{item.q}</span>
+                <svg class="cert-faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M4 6.5L9 11.5L14 6.5" stroke="#d6b12f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="cert-faq-a">
+                <p>{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 11 — FINAL CTA
+    ============================================================ -->
+    <section class="cert-final-cta reveal">
+      <div class="cert-final-inner">
+        <img src="/assets/images/footer%20logo%20tree.png" alt="Fiscus Max" class="cert-final-logo" />
+        <h2 class="cert-final-title">
+          <span class="grad-gold">Your Next Chapter Starts Here.</span>
+        </h2>
+        <p class="cert-final-body">
+          Three cohorts. Limited seats. One certification that prepares you to do work that
+          matters. Enrollment closes before each start date — and once a cohort fills, it does not
+          reopen. Choose your window and secure your seat today.
+        </p>
+
+        <div class="cert-final-ctas">
+          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">Enroll in Cohort A — Closes July 27</a>
+          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-secondary">Enroll in Cohort B — Closes August 11</a>
+          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-secondary">Enroll in Cohort C — Closes August 26</a>
+        </div>
+
+        <p class="cert-contact-line">
+          Questions about enrollment? Reach us at office@fiscusmax.com or 469-966-9071. Available
+          Monday through Sunday, 9am to 9pm.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+</BaseLayout>
+
+
+<script>
+  // ============================================================
+  // SCROLL REVEAL
+  // ============================================================
+  const revealEls = document.querySelectorAll('.cert-page .reveal');
+  const certRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => certRevealObserver.observe(el));
+
+  // ============================================================
+  // FAQ ACCORDION
+  // ============================================================
+  const faqItems = document.querySelectorAll('.cert-faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.cert-faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.cert-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+
+<style>
+  .cert-page {
+    background: #f8f4e5;
+  }
+
+  .cert-section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cert-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .cert-label {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .cert-label--gold { color: #d6b12f; }
+  .cert-label--green { color: #114b1c; }
+
+  .cert-section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(26px, 4vw, 32px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  .cert-header-sub {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.75);
+    max-width: 650px;
+    margin: 20px auto 0;
+    line-height: 1.75;
+  }
+
+  .cert-header-sub--light {
+    color: rgba(248, 244, 229, 0.8);
+  }
+
+  /* ==========================================================
+     SECTION 1 — HERO
+  ========================================================== */
+  .cert-hero {
+    background: #114b1c;
+    padding: 168px 24px 100px;
+    text-align: center;
+  }
+
+  .cert-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cert-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+
+  .cert-sub {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.85);
+    line-height: 1.75;
+    max-width: 720px;
+    margin: 0 auto 40px;
+  }
+
+  .cert-pills {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .cert-pill {
+    display: inline-block;
+    background: #211057;
+    border: 1px solid #d6b12f;
+    color: #f8f4e5;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 22px;
+    border-radius: 100px;
+  }
+
+  .cert-hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .cert-urgency {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.6);
+  }
+
+  /* ==========================================================
+     SECTION 2 — TRUST BAND
+  ========================================================== */
+  .cert-trust {
+    background: #211057;
+    padding: 28px 24px;
+  }
+
+  .cert-trust-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cert-trust-item {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #d6b12f;
+  }
+
+  .cert-trust-dot {
+    color: rgba(214, 177, 47, 0.4);
+    font-size: 10px;
+  }
+
+  /* ==========================================================
+     SECTION 3 — MISSION & VISION
+  ========================================================== */
+  .cert-mission {
+    background: #f8f4e5;
+    padding: 80px 24px;
+  }
+
+  .cert-mission-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cert-mission-cols {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .cert-mission-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(214, 177, 47, 0.3);
+  }
+
+  .cert-mission-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .cert-mission-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: #114b1c;
+    line-height: 1.85;
+  }
+
+  .cert-mission-image {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-top: 48px;
+    display: block;
+  }
+
+  /* ==========================================================
+     SECTION 4 — WHAT THIS PROGRAM IS
+  ========================================================== */
+  .cert-about {
+    background: #f8f4e5;
+    padding: 80px 24px;
+  }
+
+  .cert-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .cert-about-image {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .cert-about-body p {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: #114b1c;
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .cert-about-body p:last-child { margin-bottom: 0; }
+
+  /* ==========================================================
+     SECTION 5 — CURRICULUM
+  ========================================================== */
+  .cert-curriculum {
+    background: #f8f4e5;
+    padding: 80px 24px;
+  }
+
+  .cert-weeks {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .cert-week-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .cert-week-modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .cert-module-card {
+    background: #f8f4e5;
+    border: 1.5px solid #114b1c;
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .cert-live-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #d6b12f, #b5923b);
+    color: #0a2910;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  .cert-module-num {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #d6b12f;
+    margin-bottom: 8px;
+  }
+
+  .cert-module-title {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #114b1c;
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+
+  .cert-module-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.75);
+    line-height: 1.7;
+  }
+
+  .cert-curriculum-note {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.65);
+    text-align: center;
+    max-width: 700px;
+    margin: 48px auto 0;
+  }
+
+  /* ==========================================================
+     SECTION 6 — PROGRAM FORMAT
+  ========================================================== */
+  .cert-format {
+    background: #211057;
+    padding: 80px 24px;
+  }
+
+  .cert-step-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .cert-step-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(214, 177, 47, 0.2);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .cert-step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .cert-step-title {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #f8f4e5;
+    margin-bottom: 12px;
+  }
+
+  .cert-step-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.75);
+    line-height: 1.75;
+  }
+
+  /* ==========================================================
+     SECTION 7 — WHO THIS IS FOR
+  ========================================================== */
+  .cert-who {
+    background: #f8f4e5;
+    padding: 80px 24px;
+  }
+
+  .cert-who-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .cert-who-card {
+    background: #f8f4e5;
+    border: 1.5px solid #114b1c;
+    border-radius: 16px;
+    padding: 32px;
+    transition: border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+  }
+
+  .cert-who-card:hover {
+    border-color: #d6b12f;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(214, 177, 47, 0.18);
+  }
+
+  .cert-who-title {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #114b1c;
+    margin-bottom: 14px;
+  }
+
+  .cert-who-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.8);
+    line-height: 1.75;
+  }
+
+  /* ==========================================================
+     SECTION 8 — COHORT DATES
+  ========================================================== */
+  .cert-cohorts {
+    background: #114b1c;
+    padding: 80px 24px;
+  }
+
+  .cert-cohort-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .cert-cohort-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(214, 177, 47, 0.25);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+  }
+
+  .cert-cohort-label {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #d6b12f;
+    margin-bottom: 12px;
+  }
+
+  .cert-cohort-date {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .cert-cohort-tagline {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.75);
+    margin-bottom: 20px;
+  }
+
+  .cert-cohort-window {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.75);
+    margin-bottom: 16px;
+  }
+
+  .cert-cutoff-pill {
+    display: inline-block;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #d6b12f;
+    border: 1px solid #d6b12f;
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 14px;
+  }
+
+  .cert-cohort-finish {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.6);
+    margin-bottom: 20px;
+  }
+
+  .cert-badge {
+    display: inline-block;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .cert-badge--green {
+    background: rgba(26, 107, 46, 0.25);
+    color: #6fdb8a;
+    border: 1px solid rgba(111, 219, 138, 0.4);
+  }
+
+  .cert-badge--gold {
+    background: rgba(214, 177, 47, 0.18);
+    color: #d6b12f;
+    border: 1px solid rgba(214, 177, 47, 0.4);
+  }
+
+  .cert-cohort-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cert-policy-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(214, 177, 47, 0.15);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 32px auto 0;
+    max-width: 780px;
+  }
+
+  .cert-policy-title {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #d6b12f;
+    margin-bottom: 10px;
+  }
+
+  .cert-policy-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.7);
+    line-height: 1.8;
+  }
+
+  .cert-fee-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(214, 177, 47, 0.15);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 16px auto 0;
+    max-width: 780px;
+  }
+
+  .cert-fee-title {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #d6b12f;
+    margin-bottom: 10px;
+  }
+
+  .cert-fee-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.8);
+    line-height: 1.8;
+  }
+
+  /* ==========================================================
+     SECTION 9 — WHY CERTIFY WITH FISCUS MAX
+  ========================================================== */
+  .cert-why {
+    background: #211057;
+    padding: 80px 24px;
+  }
+
+  .cert-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  .cert-why-body p {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.85);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .cert-why-body p:last-child { margin-bottom: 0; }
+
+  .cert-why-image {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .cert-value-pills {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ==========================================================
+     SECTION 10 — FAQ
+  ========================================================== */
+  .cert-faq {
+    background: #f8f4e5;
+    padding: 80px 24px;
+  }
+
+  .cert-faq-list {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .cert-faq-item {
+    border-bottom: 1px solid rgba(17, 75, 28, 0.15);
+  }
+
+  .cert-faq-item:first-child {
+    border-top: 1px solid rgba(17, 75, 28, 0.15);
+  }
+
+  .cert-faq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #114b1c;
+    line-height: 1.4;
+  }
+
+  .cert-faq-arrow {
+    flex-shrink: 0;
+    transition: transform 0.28s ease;
+  }
+
+  .cert-faq-item.open .cert-faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .cert-faq-a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+    overflow: hidden;
+  }
+
+  .cert-faq-item.open .cert-faq-a {
+    grid-template-rows: 1fr;
+  }
+
+  .cert-faq-a p {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.8);
+    line-height: 1.8;
+    padding-bottom: 22px;
+    min-height: 0;
+  }
+
+  /* ==========================================================
+     SECTION 11 — FINAL CTA
+  ========================================================== */
+  .cert-final-cta {
+    background: #211057;
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .cert-final-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .cert-final-logo {
+    width: 70px;
+    height: auto;
+    margin: 0 auto 28px;
+    display: block;
+  }
+
+  .cert-final-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .cert-final-body {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.85);
+    line-height: 1.9;
+    margin-bottom: 36px;
+  }
+
+  .cert-final-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .cert-final-ctas .btn-primary,
+  .cert-final-ctas .btn-secondary {
+    width: 100%;
+    max-width: 380px;
+    justify-content: center;
+  }
+
+  .cert-contact-line {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.6);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ==========================================================
+     RESPONSIVE
+  ========================================================== */
+  @media (max-width: 900px) {
+    .cert-mission-cols { grid-template-columns: 1fr; gap: 40px; }
+    .cert-mission-divider { display: none; }
+    .cert-about-grid { grid-template-columns: 1fr; }
+    .cert-week-modules { grid-template-columns: 1fr; }
+    .cert-step-grid { grid-template-columns: 1fr; }
+    .cert-who-grid { grid-template-columns: 1fr; }
+    .cert-cohort-grid { grid-template-columns: 1fr; }
+    .cert-why-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .cert-hero { padding: 150px 20px 72px; }
+    .cert-mission, .cert-about, .cert-curriculum, .cert-format, .cert-who,
+    .cert-cohorts, .cert-why, .cert-faq, .cert-final-cta { padding: 60px 20px; }
+    .cert-sub { font-size: 17px; }
+    .cert-hero-ctas { flex-direction: column; align-items: center; }
+    .cert-about-image, .cert-why-image { height: 300px; }
+    .cert-mission-image { height: 260px; }
+  }
+</style>

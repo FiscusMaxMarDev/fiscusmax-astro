@@ -1,0 +1,264 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+
+  const posts = await getCollection('blog', ({ data }) => {
+    return !data.draft && new Date(data.pubDate) <= today;
+  });
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const DEFAULT_IMAGE = '/assets/images/blog_image_1.png';
+
+const title = post.data.seoTitle || `${post.data.title} | Fiscus Max`;
+const description = post.data.seoDescription || post.data.excerpt;
+const canonical = `https://fiscusmax.com/resources/blog/${post.slug}`;
+const image = post.data.image || DEFAULT_IMAGE;
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <head>
+    <link rel="canonical" href={canonical} />
+    {post.data.keyword && <meta name="keywords" content={post.data.keyword} />}
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.excerpt} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="article" />
+  </head>
+
+  <main class="blog-post">
+
+    <!-- Hero -->
+    <section class="post-hero">
+      <div class="post-hero-inner">
+        <span class="post-category">{post.data.category}</span>
+        <h1 class="post-title">{post.data.title}</h1>
+        <p class="post-meta">By {post.data.author} &nbsp;&middot;&nbsp; {formattedDate}</p>
+      </div>
+    </section>
+
+    <!-- Featured Image -->
+    <div class="post-image-wrap">
+      <img src={image} alt={post.data.title} class="post-featured-img" />
+    </div>
+
+    <!-- Article Body -->
+    <article class="post-body">
+      <Content />
+
+      <!-- Back link -->
+      <a href="/resources/blog" class="post-back">&larr; Back to Tax Resources</a>
+    </article>
+
+    <!-- CTA -->
+    <section class="post-cta">
+      <div class="post-cta-inner">
+        <h2>Ready to Talk Through Your Situation?</h2>
+        <p>Get a free, no-pressure consultation with the Fiscus Max team.</p>
+        <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1" target="_blank" rel="noopener noreferrer" class="post-cta-btn">Book a Free Consultation</a>
+      </div>
+    </section>
+
+  </main>
+
+</BaseLayout>
+
+<style>
+  .blog-post {
+    background: #f8f4e5;
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .post-hero {
+    background: linear-gradient(160deg, #064212 0%, #0a2910 100%);
+    padding: 160px 24px 72px;
+    text-align: center;
+  }
+  .post-hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .post-category {
+    display: inline-block;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d6b12f;
+    background: rgba(214, 177, 47, 0.12);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+  }
+  .post-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 400;
+    color: #f8f4e5;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .post-meta {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.5);
+  }
+
+  /* Featured image */
+  .post-image-wrap {
+    max-width: 860px;
+    margin: -32px auto 0;
+    padding: 0 24px;
+  }
+  .post-featured-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(6, 66, 18, 0.18);
+    display: block;
+  }
+
+  /* Article */
+  .post-body {
+    max-width: 720px;
+    margin: 56px auto 80px;
+    padding: 0 24px;
+  }
+  .post-body :global(p) {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: #444;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .post-body :global(p:first-of-type) {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  .post-body :global(h2) {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #064212;
+    margin: 48px 0 16px;
+    line-height: 1.3;
+  }
+  .post-body :global(h3) {
+    font-family: 'DM Serif Display', serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: #064212;
+    margin: 36px 0 14px;
+    line-height: 1.3;
+  }
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: #444;
+    line-height: 1.85;
+    margin: 0 0 18px 24px;
+  }
+  .post-body :global(a) {
+    color: #064212;
+    text-decoration-color: rgba(6, 66, 18, 0.4);
+  }
+  .post-body :global(blockquote) {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: #064212;
+    border-left: 3px solid rgba(214, 177, 47, 0.5);
+    padding-left: 20px;
+    margin: 32px 0;
+  }
+  .post-body :global(blockquote p) {
+    margin-bottom: 0;
+  }
+  .post-back {
+    display: inline-block;
+    margin-top: 48px;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #064212;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(6, 66, 18, 0.25);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .post-back:hover { color: #d6b12f; border-color: #d6b12f; }
+
+  /* CTA */
+  .post-cta {
+    background: linear-gradient(135deg, #064212, #0a2910);
+    padding: 72px 24px;
+    text-align: center;
+  }
+  .post-cta-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .post-cta h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #f8f4e5;
+    margin-bottom: 14px;
+  }
+  .post-cta p {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.65);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .post-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 15px 32px;
+    background: linear-gradient(135deg, #d6b12f, #b5923b);
+    color: #0a2910;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .post-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(214, 177, 47, 0.4);
+  }
+
+  @media (max-width: 600px) {
+    .post-featured-img { height: 220px; }
+    .post-hero { padding: 140px 20px 56px; }
+  }
+</style>

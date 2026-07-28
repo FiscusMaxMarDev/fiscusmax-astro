@@ -1,0 +1,785 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Tax Tips & Resources for Working Families | Fiscus Max Blog";
+const description = "Expert tax tips, IRS guidance, and financial education for working families, single parents, and small business owners. Free resources from Fiscus Max.";
+const canonical = "https://fiscusmax.com/resources/blog";
+const keywords = "tax tips working families, IRS help, tax preparation advice, tax resolution guide, small business tax tips, Fiscus Max blog";
+
+const today = new Date();
+today.setHours(23, 59, 59, 999);
+
+const DEFAULT_IMAGE = '/assets/images/blog_image_1.png';
+
+function slugifyCategory(label) {
+  return label
+    .toLowerCase()
+    .replace(/&/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+// These 4 posts still live at their own standalone .astro pages (src/pages/resources/blog/*.astro).
+// They are not part of the content collection, so they're listed here with the same fields a
+// collection entry would provide, purely so the index page can merge and sort them alongside
+// scheduled markdown posts. The rest of Week 1 has been migrated to src/content/blog/.
+const staticPosts = [
+  {
+    category: 'Tax Tips',
+    image: '/assets/images/blog_image_1.png',
+    title: '5 Tax Deductions Working Families Miss Every Year',
+    excerpt: 'From childcare credits to home office deductions, these commonly overlooked write-offs could put hundreds back in your pocket this season.',
+    readTime: '5 min read',
+    href: '/resources/blog/tax-deductions-working-families',
+    pubDate: new Date('2026-04-09'),
+  },
+  {
+    category: 'IRS Guidance',
+    image: '/assets/images/blog_image_2.png',
+    title: "Got an IRS Notice? Here's Exactly What to Do",
+    excerpt: "Don't panic. Most IRS notices are manageable with the right response. We break down the most common types and how to handle them.",
+    readTime: '4 min read',
+    href: '/resources/blog/irs-notice-what-to-do',
+    pubDate: new Date('2026-04-09'),
+  },
+  {
+    category: 'Tax Planning',
+    image: '/assets/images/blog_image_3.png',
+    title: "Why You Shouldn't Wait Until April to Think About Taxes",
+    excerpt: 'Year-round tax planning can dramatically reduce what you owe. Here are three simple moves to make right now.',
+    readTime: '4 min read',
+    href: '/resources/blog/year-round-tax-planning',
+    pubDate: new Date('2026-04-09'),
+  },
+  {
+    category: 'Tax Resolution',
+    image: '/assets/images/blog_image_2.png',
+    title: "Filed a Tax Extension? Here's Everything You Need to Do Before October 15, 2026",
+    excerpt: 'The October 15 deadline is approaching. If you filed an extension in April, here is what you owe, what to expect, and exactly what to do before time runs out.',
+    readTime: '6 min read',
+    href: '/resources/blog/tax-extension-october-deadline',
+    pubDate: new Date('2026-04-15'),
+  },
+].map(post => ({ ...post, dataCategory: slugifyCategory(post.category) }));
+
+// Scheduled posts authored as markdown files in src/content/blog/ — filtered to published,
+// non-draft entries, then normalized to the same shape as the static posts above.
+const collectionEntries = await getCollection('blog', ({ data }) => {
+  return !data.draft && new Date(data.pubDate) <= today;
+});
+
+function readTimeFor(entry) {
+  const words = entry.body.trim().split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / 200))} min read`;
+}
+
+const scheduledPosts = collectionEntries.map(entry => ({
+  category: entry.data.category,
+  dataCategory: slugifyCategory(entry.data.category),
+  image: entry.data.image || DEFAULT_IMAGE,
+  title: entry.data.title,
+  excerpt: entry.data.excerpt,
+  readTime: readTimeFor(entry),
+  href: `/resources/blog/${entry.slug}`,
+  pubDate: new Date(entry.data.pubDate),
+}));
+
+// Every article — standalone pages and scheduled markdown posts alike — in one chronological list.
+const posts = [...staticPosts, ...scheduledPosts].sort(
+  (a, b) => b.pubDate.getTime() - a.pubDate.getTime()
+);
+
+// Feature whichever post has the most recent publish date; everything else falls into the grid.
+const featured = posts[0];
+const gridPosts = posts.slice(1);
+
+// Filter pills are derived from whatever categories actually exist in published posts.
+const seenCategories = new Map();
+posts.forEach(post => {
+  if (!seenCategories.has(post.dataCategory)) seenCategories.set(post.dataCategory, post.category);
+});
+
+const filters = [
+  { label: 'All Posts', value: 'all' },
+  ...Array.from(seenCategories.entries()).map(([value, label]) => ({ label, value })),
+];
+
+const placeholderCount = 2;
+---
+
+<BaseLayout title={title} description={description}>
+  <head>
+    <link rel="canonical" href={canonical} />
+    <meta name="keywords" content={keywords} />
+    <meta property="og:title" content="Tax Tips & Resources | Fiscus Max Blog" />
+    <meta property="og:description" content="Expert tax tips and financial education for working families. Free resources from Fiscus Max." />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://fiscusmax.com/assets/images/footer%20logo%20tree.png" />
+    <meta property="og:type" content="website" />
+  </head>
+
+  <main class="bi-page">
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+    ============================================================ -->
+    <section class="bi-hero reveal">
+      <div class="bi-hero-inner">
+        <p class="bi-label bi-label--gold">Resources</p>
+        <h1 class="bi-headline">
+          <span class="grad-gold">Know More. Owe Less. Start Here.</span>
+        </h1>
+        <p class="bi-hero-sub">
+          Tax guidance written for the people who actually need it — working families, single
+          parents, and small business owners who deserve straight answers without the runaround.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 2 — CATEGORY FILTER BAR
+    ============================================================ -->
+    <section class="bi-filter-bar">
+      <div class="bi-filter-row">
+        {filters.map((f, i) => (
+          <button class={`filter-btn${i === 0 ? ' active' : ''}`} data-category={f.value}>{f.label}</button>
+        ))}
+      </div>
+
+      <div class="bi-filter-select-wrap">
+        <select class="filter-select" aria-label="Filter articles by category">
+          {filters.map(f => (
+            <option value={f.value}>{f.label}</option>
+          ))}
+        </select>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 3 — FEATURED POST
+    ============================================================ -->
+    {featured ? (
+      <section class="bi-featured">
+        <div class="bi-featured-inner reveal">
+          <div class="bi-featured-grid">
+            <img
+              src={featured.image}
+              alt={featured.title}
+              class="bi-featured-image"
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div class="bi-featured-content">
+              <p class="bi-featured-category">{featured.category}</p>
+              <h2 class="bi-featured-title">
+                <span class="grad-dark">{featured.title}</span>
+              </h2>
+              <p class="bi-featured-excerpt">
+                {featured.excerpt}
+              </p>
+              <p class="bi-featured-readtime">{featured.readTime}</p>
+              <a href={featured.href} class="bi-featured-cta">Read the Full Guide →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="bi-empty">
+        <div class="bi-empty-inner reveal">
+          <p class="bi-empty-text">New articles are on the way — check back soon.</p>
+        </div>
+      </section>
+    )}
+
+
+    <!-- ============================================================
+         SECTION 4 — POST GRID
+    ============================================================ -->
+    <section class="bi-grid-section">
+      <div class="bi-grid-inner">
+        <div class="bi-grid">
+          {gridPosts.map(post => (
+            <a href={post.href} class="blog-post-card reveal" data-category={post.dataCategory}>
+              <img src={post.image} alt={post.title} class="bi-card-image" loading="lazy" decoding="async" />
+              <p class="bi-card-category">{post.category}</p>
+              <h3 class="bi-card-title">{post.title}</h3>
+              <p class="bi-card-excerpt">{post.excerpt}</p>
+              <div class="bi-card-footer">
+                <span class="bi-card-readtime">{post.readTime}</span>
+                <span class="bi-card-readmore">Read Article →</span>
+              </div>
+            </a>
+          ))}
+
+          {Array.from({ length: placeholderCount }).map(() => (
+            <div class="blog-post-card bi-card-placeholder-wrap reveal">
+              <div class="bi-card-placeholder">
+                <span class="bi-card-placeholder-text">New Article Coming Soon</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 5 — NEWSLETTER SIGNUP
+    ============================================================ -->
+    <section class="bi-newsletter">
+      <div class="bi-newsletter-inner reveal">
+        <p class="bi-label bi-label--gold">Stay Informed</p>
+        <h2 class="bi-newsletter-title">
+          <span class="grad-gold">The Tax Code Changes. Deadlines Move. Stay Ahead of Both.</span>
+        </h2>
+        <p class="bi-newsletter-sub">
+          No spam. No jargon. Just timely tax guidance delivered to your inbox before it matters.
+        </p>
+
+        <form class="newsletter-form" action="https://forms.gle/hiffmzyxvzHanC2R6" method="GET" target="_blank">
+          <input
+            type="email"
+            placeholder="Your email address"
+            class="newsletter-input"
+            required
+          />
+          <button type="submit" class="newsletter-btn">
+            Subscribe
+          </button>
+        </form>
+
+        <p class="bi-newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 6 — CTA STRIP
+    ============================================================ -->
+    <section class="bi-cta-strip reveal">
+      <div class="bi-cta-inner">
+        <h2 class="bi-cta-title">
+          <span class="grad-dark">Knowledge Is the First Step. We Can Handle the Rest.</span>
+        </h2>
+        <p class="bi-cta-sub">
+          Book a free consultation and let's talk about what your situation actually requires.
+        </p>
+        <a href="https://forms.monday.com/forms/755fc9f7b7fef79ebac688141a00bf74?r=use1" target="_blank" rel="noopener noreferrer" class="btn-primary">Book Your Free Consultation</a>
+      </div>
+    </section>
+
+  </main>
+
+</BaseLayout>
+
+
+<script>
+  // ============================================================
+  // SCROLL REVEAL
+  // ============================================================
+  const revealEls = document.querySelectorAll('.bi-page .reveal');
+  const biRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => biRevealObserver.observe(el));
+
+  // ============================================================
+  // CATEGORY FILTER (pill row on desktop, dropdown on mobile)
+  // ============================================================
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterSelect = document.querySelector('.filter-select');
+    const posts = document.querySelectorAll('.blog-post-card');
+
+    function applyFilter(cat) {
+      filterBtns.forEach(b => b.classList.toggle('active', b.dataset.category === cat));
+      if (filterSelect) filterSelect.value = cat;
+      posts.forEach(post => {
+        post.style.display =
+          cat === 'all' || post.dataset.category === cat
+            ? 'flex'
+            : 'none';
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.category));
+    });
+
+    if (filterSelect) {
+      filterSelect.addEventListener('change', () => applyFilter(filterSelect.value));
+    }
+  });
+</script>
+
+
+<style>
+  .bi-page {
+    background: #f8f4e5;
+  }
+
+  .bi-label {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .bi-label--gold { color: #d6b12f; }
+
+  /* ==========================================================
+     SECTION 1 — HERO
+  ========================================================== */
+  .bi-hero {
+    background: #114b1c;
+    padding: 168px 24px 80px;
+    text-align: center;
+  }
+
+  .bi-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bi-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .bi-hero-sub {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.85);
+    line-height: 1.75;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* ==========================================================
+     SECTION 2 — CATEGORY FILTER BAR
+  ========================================================== */
+  .bi-filter-bar {
+    background: #f8f4e5;
+    padding: 32px 24px 0;
+  }
+
+  .bi-filter-row {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1.5px solid #114b1c;
+    background: transparent;
+    color: #114b1c;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: #114b1c;
+    color: #f8f4e5;
+    border-color: #114b1c;
+  }
+
+  .filter-btn[data-category="all"].active {
+    background: linear-gradient(180deg, #d6b661, #b5923b);
+    color: #0a2910;
+    border-color: transparent;
+  }
+
+  .bi-filter-select-wrap {
+    display: none;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .filter-select {
+    width: 100%;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #114b1c;
+    background: #f8f4e5;
+    color: #114b1c;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M4 6.5L9 11.5L14 6.5' stroke='%23114b1c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  /* ==========================================================
+     SECTION 3 — FEATURED POST
+  ========================================================== */
+  .bi-featured {
+    background: #f8f4e5;
+    padding: 48px 24px 0;
+  }
+
+  .bi-empty {
+    background: #f8f4e5;
+    padding: 48px 24px 0;
+    text-align: center;
+  }
+
+  .bi-empty-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bi-empty-text {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.6);
+  }
+
+  .bi-featured-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bi-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .bi-featured-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .bi-featured-category {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #d6b12f;
+    margin-bottom: 16px;
+  }
+
+  .bi-featured-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .bi-featured-excerpt {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.8);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .bi-featured-readtime {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.55);
+    margin-bottom: 20px;
+  }
+
+  .bi-featured-cta {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #d6b12f;
+    text-decoration: none;
+  }
+
+  .bi-featured-cta:hover {
+    text-decoration: underline;
+  }
+
+  /* ==========================================================
+     SECTION 4 — POST GRID
+  ========================================================== */
+  .bi-grid-section {
+    background: #f8f4e5;
+    padding: 48px 24px 80px;
+  }
+
+  .bi-grid-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .blog-post-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(17, 75, 28, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    padding-bottom: 20px;
+  }
+
+  a.blog-post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(17, 75, 28, 0.1);
+  }
+
+  .bi-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bi-card-category {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #d6b12f;
+    padding: 16px 20px 0;
+  }
+
+  .bi-card-title {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #114b1c;
+    padding: 8px 20px 0;
+    line-height: 1.35;
+  }
+
+  .bi-card-excerpt {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.75);
+    padding: 8px 20px 0;
+    line-height: 1.65;
+  }
+
+  .bi-card-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 0;
+  }
+
+  .bi-card-readtime {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.55);
+  }
+
+  .bi-card-readmore {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #d6b12f;
+  }
+
+  /* Placeholder cards */
+  .bi-card-placeholder-wrap {
+    opacity: 0.5;
+    cursor: default;
+    padding-bottom: 0;
+  }
+
+  .bi-card-placeholder-wrap:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .bi-card-placeholder {
+    flex: 1;
+    min-height: 320px;
+    background: linear-gradient(135deg, #e3e3e3, #cfcfcf);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .bi-card-placeholder-text {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(17, 75, 28, 0.5);
+    text-align: center;
+  }
+
+  /* ==========================================================
+     SECTION 5 — NEWSLETTER SIGNUP
+  ========================================================== */
+  .bi-newsletter {
+    background: #211057;
+    padding: 72px 24px;
+    text-align: center;
+  }
+
+  .bi-newsletter-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .bi-newsletter-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .bi-newsletter-sub {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.8);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-input {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(214, 177, 47, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8f4e5;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .newsletter-input::placeholder {
+    color: rgba(248, 244, 229, 0.5);
+  }
+
+  .newsletter-btn {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 14px 28px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #d6b661, #b5923b);
+    color: #0a2910;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .bi-newsletter-privacy {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.45);
+    margin-top: 20px;
+  }
+
+  /* ==========================================================
+     SECTION 6 — CTA STRIP
+  ========================================================== */
+  .bi-cta-strip {
+    background: #f8f4e5;
+    padding: 64px 24px;
+    text-align: center;
+  }
+
+  .bi-cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .bi-cta-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .bi-cta-sub {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(17, 75, 28, 0.75);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  /* ==========================================================
+     RESPONSIVE
+  ========================================================== */
+  @media (max-width: 900px) {
+    .bi-featured-grid { grid-template-columns: 1fr; }
+    .bi-featured-image { height: 300px; }
+    .bi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .bi-hero { padding: 150px 20px 60px; }
+    .bi-filter-bar { padding: 28px 20px 0; }
+    .bi-featured, .bi-grid-section { padding-left: 20px; padding-right: 20px; }
+    .bi-newsletter, .bi-cta-strip { padding: 56px 20px; }
+    .newsletter-form { flex-direction: column; align-items: center; }
+  }
+
+  @media (max-width: 600px) {
+    .bi-grid { grid-template-columns: 1fr; }
+    .bi-filter-row { display: none; }
+    .bi-filter-select-wrap { display: block; }
+  }
+</style>

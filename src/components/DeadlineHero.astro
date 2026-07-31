@@ -1,0 +1,172 @@
+---
+import CTAButton from './CTAButton.astro';
+import { daysUntilDeadline } from '../config/season';
+
+const BOOK_URL = 'https://dub.sh/rcTyqHn';
+const daysLeft = daysUntilDeadline();
+const showCountdown = daysLeft > 0;
+---
+
+<section id="hero" class="dh-hero">
+  <div class={`dh-inner${showCountdown ? '' : ' dh-inner--single'}`}>
+
+    <div class="dh-left">
+      <div class="dh-postmark">Oct 15</div>
+
+      <h1 class="dh-headline">We help late filers get back on track.</h1>
+
+      <p class="dh-sub">Missed the deadline? You still have options — no judgment, no penalty spiral.</p>
+
+      <div class="dh-cta">
+        <CTAButton
+          href={BOOK_URL}
+          label="Book Free Consultation"
+          variant="primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        />
+      </div>
+    </div>
+
+    {showCountdown && (
+      <div class="dh-right">
+        <p class="dh-eyebrow">Time to Act</p>
+        <div class="dh-days-num">{daysLeft}</div>
+        <div class="dh-days-word">days</div>
+        <p class="dh-caption">until Oct 15</p>
+      </div>
+    )}
+
+  </div>
+</section>
+
+<style>
+  .dh-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .dh-inner--single {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+
+  /* Postmark / stamp badge */
+  .dh-postmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 92px;
+    height: 92px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    position: relative;
+    transform: rotate(-9deg);
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .dh-postmark::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+  }
+
+  .dh-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #d6b661, #fbf7a0, #b5923b, #edac0c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 22px;
+  }
+
+  .dh-sub {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.82);
+    line-height: 1.72;
+    margin-bottom: 36px;
+    max-width: 500px;
+  }
+
+  .dh-cta {
+    display: flex;
+  }
+
+  /* Countdown column */
+  .dh-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .dh-eyebrow {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .dh-days-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 128px;
+    font-weight: 400;
+    line-height: 1;
+    background: linear-gradient(180deg, #d6b661, #fbf7a0, #b5923b, #edac0c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dh-days-word {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(248, 244, 229, 0.85);
+    margin-top: -6px;
+  }
+
+  .dh-caption {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(248, 244, 229, 0.55);
+    margin-top: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .dh-inner { grid-template-columns: 1fr; gap: 48px; }
+    .dh-headline { font-size: 36px; }
+    .dh-days-num { font-size: 96px; }
+  }
+
+  @media (max-width: 480px) {
+    .dh-headline { font-size: 30px; }
+    .dh-days-num { font-size: 80px; }
+  }
+</style>

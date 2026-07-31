@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DeadlineHero from '../components/DeadlineHero.astro';
+import { isDeadlineSeasonActive } from '../config/season';
+
+const showDeadlineHero = isDeadlineSeasonActive();
 ---
 
 <BaseLayout>
@@ -691,78 +695,82 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </style>
 
   <!-- ============================================================
-       HERO
+       HERO (seasonal swap: DeadlineHero on/before Oct 15, evergreen after)
   ============================================================ -->
-  <section id="hero">
-    <div class="hero-inner">
+  {showDeadlineHero ? (
+    <DeadlineHero />
+  ) : (
+    <section id="hero">
+      <div class="hero-inner">
 
-      <!-- Left column -->
-      <div class="hero-left">
+        <!-- Left column -->
+        <div class="hero-left">
 
-        <div class="hero-pill">
-          <span class="pill-dot"></span>
-          Free Consultations Available
-        </div>
-
-        <h1 class="hero-headline">Your Family Deserves Every&nbsp;Dollar&nbsp;Back.</h1>
-
-        <p class="hero-sub">Tax preparation and resolution made simple, affordable, and stress-free , because hardworking families shouldn't leave money on&nbsp;the&nbsp;table.</p>
-
-        <div class="hero-ctas">
-          <a href="#book"     class="btn-primary">Book a Free Consultation</a>
-          <a href="#services" class="btn-secondary">See How We Help</a>
-        </div>
-
-        <div class="hero-divider"></div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-num">$2M+</span>
-            <span class="stat-label">Saved for Families</span>
+          <div class="hero-pill">
+            <span class="pill-dot"></span>
+            Free Consultations Available
           </div>
-          <div class="stat-item">
-            <span class="stat-num">500+</span>
-            <span class="stat-label">Cases Resolved</span>
+
+          <h1 class="hero-headline">Your Family Deserves Every&nbsp;Dollar&nbsp;Back.</h1>
+
+          <p class="hero-sub">Tax preparation and resolution made simple, affordable, and stress-free , because hardworking families shouldn't leave money on&nbsp;the&nbsp;table.</p>
+
+          <div class="hero-ctas">
+            <a href="#book"     class="btn-primary">Book a Free Consultation</a>
+            <a href="#services" class="btn-secondary">See How We Help</a>
           </div>
-          <div class="stat-item">
-            <span class="stat-num">98%</span>
-            <span class="stat-label">Client Satisfaction</span>
-          </div>
-        </div>
 
-      </div><!-- /hero-left -->
+          <div class="hero-divider"></div>
 
-      <!-- Right column , animated cards -->
-      <div class="hero-right">
-
-        <!-- Floating badge -->
-        <div class="case-badge">✓ IRS Case Closed ✓</div>
-
-        <!-- Card 1: IRS Notice -->
-        <div class="card-wrap card-wrap-1" id="heroCard1">
-          <div class="hero-card card-irs">
-            <div class="card-alert-label">IRS Notice Received</div>
-            <div class="card-title">Balance Due: $12,450</div>
-            <div class="card-body">Action Required , Response deadline in 30 days</div>
-          </div>
-        </div>
-
-        <!-- Card 2: Resolution -->
-        <div class="card-wrap card-wrap-2" id="heroCard2">
-          <div class="hero-card card-res">
-            <div class="card-icon-box">
-              <span class="card-dollar">$</span>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">$2M+</span>
+              <span class="stat-label">Saved for Families</span>
             </div>
-            <div class="card-success-label">Fiscus Max Resolved It</div>
-            <div class="card-title">Negotiated reduction secured:</div>
-            <div class="card-savings">$8,200 saved</div>
+            <div class="stat-item">
+              <span class="stat-num">500+</span>
+              <span class="stat-label">Cases Resolved</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">98%</span>
+              <span class="stat-label">Client Satisfaction</span>
+            </div>
           </div>
-        </div>
 
-      </div><!-- /hero-right -->
+        </div><!-- /hero-left -->
 
-    </div><!-- /hero-inner -->
-  </section>
+        <!-- Right column , animated cards -->
+        <div class="hero-right">
+
+          <!-- Floating badge -->
+          <div class="case-badge">✓ IRS Case Closed ✓</div>
+
+          <!-- Card 1: IRS Notice -->
+          <div class="card-wrap card-wrap-1" id="heroCard1">
+            <div class="hero-card card-irs">
+              <div class="card-alert-label">IRS Notice Received</div>
+              <div class="card-title">Balance Due: $12,450</div>
+              <div class="card-body">Action Required , Response deadline in 30 days</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Resolution -->
+          <div class="card-wrap card-wrap-2" id="heroCard2">
+            <div class="hero-card card-res">
+              <div class="card-icon-box">
+                <span class="card-dollar">$</span>
+              </div>
+              <div class="card-success-label">Fiscus Max Resolved It</div>
+              <div class="card-title">Negotiated reduction secured:</div>
+              <div class="card-savings">$8,200 saved</div>
+            </div>
+          </div>
+
+        </div><!-- /hero-right -->
+
+      </div><!-- /hero-inner -->
+    </section>
+  )}
 
 
   <script>
@@ -770,29 +778,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // ============================================================
     const heroCard1 = document.getElementById('heroCard1');
     const heroCard2 = document.getElementById('heroCard2');
-    const cardWraps = [heroCard1, heroCard2];
 
-    const heroObserver = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
+    // heroCard1/heroCard2 only exist in the evergreen hero — the seasonal
+    // DeadlineHero has no cards, so skip this entirely when they're absent.
+    if (heroCard1 && heroCard2) {
+      const cardWraps = [heroCard1, heroCard2];
 
-      cardWraps.forEach((wrap, i) => {
-        setTimeout(() => {
-          wrap.classList.add('spring-in');
+      const heroObserver = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
 
-          wrap.addEventListener('animationend', () => {
-            // Lock opacity before removing animation
-            wrap.style.opacity = '1';
-            wrap.classList.remove('spring-in');
-            wrap.classList.add(`float-${i + 1}`);
-          }, { once: true });
+        cardWraps.forEach((wrap, i) => {
+          setTimeout(() => {
+            wrap.classList.add('spring-in');
 
-        }, i * 250); // 0ms card1, 250ms card2
-      });
+            wrap.addEventListener('animationend', () => {
+              // Lock opacity before removing animation
+              wrap.style.opacity = '1';
+              wrap.classList.remove('spring-in');
+              wrap.classList.add(`float-${i + 1}`);
+            }, { once: true });
 
-      heroObserver.disconnect();
-    }, { threshold: 0.15 });
+          }, i * 250); // 0ms card1, 250ms card2
+        });
 
-    heroObserver.observe(document.getElementById('hero'));
+        heroObserver.disconnect();
+      }, { threshold: 0.15 });
+
+      heroObserver.observe(document.getElementById('hero'));
+    }
 
     // ============================================================
     // SCROLL REVEAL , fade-in-up for all .reveal elements

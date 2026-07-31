@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getFeaturedCohort, isCohortClosed } from '../config/cohorts';
+
+const featuredCohort = getFeaturedCohort();
 
 const title = "Fiscus Max Virtual Tax Preparer Certification — 2026 Cohorts Now Open";
 const description = "Join the Fiscus Max Virtual Tax Preparer Certification. Three cohorts starting August, September, and October 2026. Limited seats. Enrollment closes soon.";
@@ -121,9 +124,6 @@ const cohorts = [
     window: 'Aug 3 – Sep 4, 2026',
     cutoff: 'Enrollment closes July 27',
     finish: 'Complete by ~Sep 4, 2026',
-    status: 'Enrolling Now',
-    statusClass: 'cert-badge--green',
-    btnClass: 'btn-primary',
   },
   {
     letter: 'B',
@@ -132,9 +132,6 @@ const cohorts = [
     window: 'Aug 18 – Sep 19, 2026',
     cutoff: 'Enrollment closes August 11',
     finish: 'Complete by ~Sep 19, 2026',
-    status: 'Enrolling Now',
-    statusClass: 'cert-badge--green',
-    btnClass: 'btn-primary',
   },
   {
     letter: 'C',
@@ -143,11 +140,19 @@ const cohorts = [
     window: 'Sep 2 – Oct 4, 2026',
     cutoff: 'Enrollment closes August 26',
     finish: 'Complete by ~Oct 4, 2026',
-    status: 'Limited Seats',
-    statusClass: 'cert-badge--gold',
-    btnClass: 'btn-secondary',
   },
-];
+].map((c) => {
+  const closed = isCohortClosed(c.letter);
+  const featured = !closed && c.letter === featuredCohort;
+  return {
+    ...c,
+    closed,
+    featured,
+    status: closed ? 'Enrollment Closed' : featured ? 'Enrolling Now' : 'Limited Seats',
+    statusClass: closed ? 'cert-badge--closed' : featured ? 'cert-badge--green' : 'cert-badge--gold',
+    btnClass: featured ? 'btn-primary' : 'btn-secondary',
+  };
+});
 
 const faqs = [
   {
@@ -199,24 +204,28 @@ const faqs = [
     <section class="cert-hero reveal">
       <div class="cert-hero-inner">
         <h1 class="cert-headline">
-          <span class="grad-gold">2026 Enrollment Now Open</span>
+          <span class="grad-gold">Your next career move could be seasonal.</span>
         </h1>
         <p class="cert-sub">
-          There Are Plenty of Tax Training Programs. Most Teach You How to Fill Out Forms. This
-          one teaches you how to change someone's financial life.
+          Whether you're looking to earn extra income during tax season, transition into
+          something new, or build a flexible career on your own schedule, our certification
+          program gets you there. No prior tax experience required. Just a willingness to learn
+          and a few months a year to earn.
         </p>
 
         <div class="cert-pills">
-          <span class="cert-pill">Cohort A: Closes July 27</span>
-          <span class="cert-pill">Cohort B: Closes August 11</span>
-          <span class="cert-pill">Cohort C: Closes August 26</span>
+          {cohorts.map((c) => (
+            <span class={`cert-pill${c.closed ? ' cert-pill--closed' : ''}${c.featured ? ' cert-pill--featured' : ''}`}>
+              Cohort {c.letter}: {c.closed ? 'Enrollment Closed' : c.cutoff}
+            </span>
+          ))}
         </div>
 
         <div class="cert-hero-ctas">
-          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve Your Seat Before Enrollment Closes</a>
+          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">Start your certification</a>
         </div>
 
-        <p class="cert-urgency">We limit every cohort deliberately. Smaller groups mean better support.</p>
+        <p class="cert-urgency">Enrollment-based certification. Set your own hours. Keep your day job, or don't.</p>
       </div>
     </section>
 
@@ -272,8 +281,8 @@ const faqs = [
         </div>
 
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80"
-          alt="Tax professionals collaborating remotely"
+          src="/assets/images/cert-dallas-collaboration.jpg"
+          alt="Career changers welcome. No tax background needed to get certified."
           class="cert-mission-image reveal"
           loading="lazy"
           decoding="async"
@@ -296,8 +305,8 @@ const faqs = [
 
         <div class="cert-about-grid">
           <img
-            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-            alt="Tax professional reviewing documents at desk"
+            src="/assets/images/cert-remote-home-office.jpg"
+            alt="Study from home, on your own time, at your own pace."
             class="cert-about-image reveal"
             loading="lazy"
             decoding="async"
@@ -456,7 +465,7 @@ const faqs = [
 
         <div class="cert-cohort-grid">
           {cohorts.map((c, i) => (
-            <div class={`cert-cohort-card reveal reveal-d${i + 1}`}>
+            <div class={`cert-cohort-card reveal reveal-d${i + 1}${c.closed ? ' cert-cohort-card--closed' : ''}${c.featured ? ' cert-cohort-card--featured' : ''}`}>
               <p class="cert-cohort-label">Cohort {c.letter}</p>
               <p class="cert-cohort-date grad-gold">{c.date}</p>
               <p class="cert-cohort-tagline">{c.tagline}</p>
@@ -464,7 +473,11 @@ const faqs = [
               <span class="cert-cutoff-pill">{c.cutoff}</span>
               <p class="cert-cohort-finish">{c.finish}</p>
               <span class={`cert-badge ${c.statusClass}`}>{c.status}</span>
-              <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class={`${c.btnClass} cert-cohort-btn`}>Enroll in Cohort {c.letter}</a>
+              {c.closed ? (
+                <span class="cert-cohort-btn cert-cohort-btn--closed" aria-disabled="true">Enrollment Closed</span>
+              ) : (
+                <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class={`${c.btnClass} cert-cohort-btn`}>Enroll in Cohort {c.letter}</a>
+              )}
             </div>
           ))}
         </div>
@@ -525,8 +538,8 @@ const faqs = [
           </div>
 
           <img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80"
-            alt="Professional woman working with a client"
+            src="/assets/images/cert-family-filing-taxes.jpg"
+            alt="Turn a few months of focused work into a steady seasonal income stream."
             class="cert-why-image reveal reveal-d2"
             loading="lazy"
             decoding="async"
@@ -552,6 +565,10 @@ const faqs = [
           <h2 class="cert-section-title">
             <span class="grad-dark">What You Need to Know Before You Enroll.</span>
           </h2>
+          <p class="cert-header-sub">
+            You don't need a finance degree, an accounting background, or full-time availability.
+            Most of our certified preparers started exactly where you are now.
+          </p>
         </div>
 
         <div class="cert-faq-list" id="certFaqList">
@@ -589,9 +606,13 @@ const faqs = [
         </p>
 
         <div class="cert-final-ctas">
-          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">Enroll in Cohort A — Closes July 27</a>
-          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-secondary">Enroll in Cohort B — Closes August 11</a>
-          <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class="btn-secondary">Enroll in Cohort C — Closes August 26</a>
+          {cohorts.map((c) => (
+            c.closed ? (
+              <span class="btn-secondary cert-final-btn--closed" aria-disabled="true">Cohort {c.letter} — Enrollment Closed</span>
+            ) : (
+              <a href={ENROLL_URL} target="_blank" rel="noopener noreferrer" class={c.featured ? 'btn-primary' : 'btn-secondary'}>Enroll in Cohort {c.letter} — {c.cutoff}</a>
+            )
+          ))}
         </div>
 
         <p class="cert-contact-line">
@@ -739,6 +760,16 @@ const faqs = [
     font-weight: 400;
     padding: 10px 22px;
     border-radius: 100px;
+  }
+
+  .cert-pill--closed {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .cert-pill--featured {
+    border-color: #d6b12f;
+    box-shadow: 0 0 0 1px rgba(214, 177, 47, 0.35);
   }
 
   .cert-hero-ctas {
@@ -1071,6 +1102,15 @@ const faqs = [
     text-align: center;
   }
 
+  .cert-cohort-card--closed {
+    opacity: 0.6;
+  }
+
+  .cert-cohort-card--featured {
+    border-color: #d6b12f;
+    box-shadow: 0 0 0 1px rgba(214, 177, 47, 0.4), 0 12px 32px rgba(214, 177, 47, 0.15);
+  }
+
   .cert-cohort-label {
     font-family: 'Funnel Display', sans-serif;
     font-size: 11px;
@@ -1146,10 +1186,28 @@ const faqs = [
     border: 1px solid rgba(214, 177, 47, 0.4);
   }
 
+  .cert-badge--closed {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(248, 244, 229, 0.5);
+    border: 1px solid rgba(248, 244, 229, 0.2);
+  }
+
   .cert-cohort-btn {
     display: flex;
     width: 100%;
     justify-content: center;
+  }
+
+  .cert-cohort-btn--closed {
+    padding: 14px 28px;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(248, 244, 229, 0.4);
+    border: 1.5px solid rgba(248, 244, 229, 0.15);
+    border-radius: 8px;
+    cursor: not-allowed;
   }
 
   .cert-policy-box {
@@ -1364,6 +1422,12 @@ const faqs = [
     width: 100%;
     max-width: 380px;
     justify-content: center;
+  }
+
+  .cert-final-btn--closed {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .cert-contact-line {
